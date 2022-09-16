@@ -6,6 +6,7 @@
 #include <array>
 #include <memory>
 #include <onnxruntime_cxx_api.h>
+#include <onnxruntime_c_api.h>
 #include <vector>
 #include "json.hpp"
 

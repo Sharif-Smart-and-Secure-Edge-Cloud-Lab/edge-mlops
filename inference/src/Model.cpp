@@ -66,9 +66,6 @@ std::string Model::inference(std::string review){
     float* raw_output = output_tensor[0].GetTensorMutableData<float>();
     size_t output_size = output_tensor[0].GetTensorTypeAndShapeInfo().GetElementCount();    
     std::vector<float> output_values(raw_output, raw_output+output_size);
-    //for(const auto& out : output_values)
-    //    std::cout << out << ", ";
-    //std::cout << std::endl;
 	if(output_values[0] > 0.5)
 		return std::string{"positive +"};
 	else
