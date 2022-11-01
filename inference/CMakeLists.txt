@@ -5,23 +5,48 @@ project("edge-mlops")
 enable_language(CXX)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-psabi")
-message(STATUS "Compiling for armv7 architecture")
+set(ORT_LIB_DIR "/home/nima/onnxruntime/build/Linux/Release")
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 set(ONNXRUNTIME_INCLUDE_DIR "/home/nima/onnxruntime/include/onnxruntime/core/session")
 include_directories("${ONNXRUNTIME_INCLUDE_DIR}")
 
-link_directories("${CMAKE_CURRENT_SOURCE_DIR}/ort/lib")
+link_directories("${ORT_LIB_DIR}"
+                 "${ORT_LIB_DIR}/external/onnx"
+                 "${ORT_LIB_DIR}/external/protobuf/cmake"
+                 "${ORT_LIB_DIR}/external/re2"
+                 "${ORT_LIB_DIR}/external/abseil-cpp/absl/base"
+                 "${ORT_LIB_DIR}/external/abseil-cpp/absl/container"
+                 "${ORT_LIB_DIR}/external/abseil-cpp/absl/hash"
+                 "${ORT_LIB_DIR}/external/nsync/")
 
 add_executable(${PROJECT_NAME} src/main.cpp src/Model.cpp)
-set_target_properties(${PROJECT_NAME} PROPERTIES INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/ort/lib")
-target_link_libraries(${PROJECT_NAME} onnxruntime 
-                                      -static-libgcc 
-                                      -static-libstdc++)
-                                      
-install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/ort DESTINATION .)
-install(TARGETS ${PROJECT_NAME} DESTINATION bin
-        LIBRARY DESTINATION ort/lib)
+# set_target_properties(${PROJECT_NAME} PROPERTIES INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/ort/lib")
+target_link_libraries(${PROJECT_NAME} -static 
+                                      onnxruntime_session
+                                      onnxruntime_optimizer
+                                      onnxruntime_providers
+                                      onnxruntime_util
+                                      onnxruntime_framework
+                                      onnxruntime_graph
+                                      onnxruntime_mlas
+                                      onnxruntime_common
+                                      onnxruntime_flatbuffers
+                                      onnx_test_data_proto
+                                      onnx
+                                      onnx_proto
+                                      protobuf-lite
+                                      re2
+                                      absl_base
+                                      absl_throw_delegate
+                                      absl_raw_hash_set
+                                      absl_hash
+                                      absl_city
+                                      absl_low_level_hash
+                                      nsync_cpp)
+
+# install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/ort DESTINATION .)
+# install(TARGETS ${PROJECT_NAME} DESTINATION bin
+#         LIBRARY DESTINATION ort/lib)
