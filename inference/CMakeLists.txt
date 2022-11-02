@@ -50,6 +50,8 @@ target_link_libraries(${PROJECT_NAME} -static
                                       cpuinfo 
                                       clog)
 
-# install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/ort DESTINATION .)
-# install(TARGETS ${PROJECT_NAME} DESTINATION bin
-#         LIBRARY DESTINATION ort/lib)
+install(TARGETS ${PROJECT_NAME} DESTINATION bin)
+install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/word_indexes.json DESTINATION bin
+              PERMISSIONS OWNER_READ GROUP_READ)
+install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/../convert_model/output.onnx DESTINATION bin
+              PERMISSIONS OWNER_READ GROUP_READ)
