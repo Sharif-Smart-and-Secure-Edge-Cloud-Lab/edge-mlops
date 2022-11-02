@@ -5,8 +5,7 @@
 int main(){
 	std::cout << "## IMDB review classifier ##" << std::endl;
 	std::cout << "Initializing model...\n";
-    Model m{"/home/nima/Documents/l/edge-mlops/inference/word_indexes.json",
-            "/home/nima/Documents/l/edge-mlops/convert_model/output.onnx"};
+    Model m{"word_indexes.json", "output.onnx"};
 	std::string input_text;
 	while(1){
 		std::cout << "Enter text (type exit() to exit): ";

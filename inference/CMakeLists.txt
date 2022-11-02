@@ -20,10 +20,11 @@ link_directories("${ORT_LIB_DIR}"
                  "${ORT_LIB_DIR}/external/abseil-cpp/absl/base"
                  "${ORT_LIB_DIR}/external/abseil-cpp/absl/container"
                  "${ORT_LIB_DIR}/external/abseil-cpp/absl/hash"
-                 "${ORT_LIB_DIR}/external/nsync/")
+                 "${ORT_LIB_DIR}/external/nsync/"
+                 "${ORT_LIB_DIR}/external/pytorch_cpuinfo/deps/clog"
+                 "${ORT_LIB_DIR}/external/pytorch_cpuinfo/")
 
 add_executable(${PROJECT_NAME} src/main.cpp src/Model.cpp)
-# set_target_properties(${PROJECT_NAME} PROPERTIES INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/ort/lib")
 target_link_libraries(${PROJECT_NAME} -static 
                                       onnxruntime_session
                                       onnxruntime_optimizer
@@ -45,7 +46,9 @@ target_link_libraries(${PROJECT_NAME} -static
                                       absl_hash
                                       absl_city
                                       absl_low_level_hash
-                                      nsync_cpp)
+                                      nsync_cpp 
+                                      cpuinfo 
+                                      clog)
 
 # install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/ort DESTINATION .)
 # install(TARGETS ${PROJECT_NAME} DESTINATION bin
