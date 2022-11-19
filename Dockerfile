@@ -16,8 +16,7 @@ RUN rm arm-tc.tar.xz
 # download ORT source code
 WORKDIR /ORT
 # download or move ort to this directory
-RUN git clone --recursive https://github.com/Microsoft/onnxruntime.git
-# ADD /home/nima/onnxruntime .
+ADD onnxruntime .
 
 # download protoc
 WORKDIR /protoc
