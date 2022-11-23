@@ -17,13 +17,12 @@ RUN mkdir arm-tc && tar -xf arm-tc.tar.xz -C arm-tc --strip-components 1 && rm a
 ENV PATH="${PATH}:/TC/arm-tc/bin"
 
 WORKDIR /ORT
-VOLUME /ORT 
-# RUN git clone --recursive https://github.com/Microsoft/onnxruntime.git
-# COPY tool.cmake ./onnxruntime
+RUN git clone --recursive https://github.com/Microsoft/onnxruntime.git
+COPY tool.cmake ./onnxruntime/tool.cmake
 
-# # compile onnxruntime
-# WORKIDR /ORT/onnxruntime
-# RUN git checkout v1.12.1
-# RUN ./build.sh --config Release --parallel --arm --update --build --build_shared_lib --cmake_extra_defines ONNX_CUSTOM_PROTOC_EXECUTABLE=/protoc/bin/protoc CMAKE_TOOLCHAIN_FILE=/ORT/onnxruntime/tool.cmake
+# compile onnxruntime
+WORKDIR /ORT/onnxruntime
+RUN git checkout v1.12.1
+RUN ./build.sh --config Release --parallel --arm --update --build --build_shared_lib --cmake_extra_defines ONNX_CUSTOM_PROTOC_EXECUTABLE=/protoc/bin/protoc CMAKE_TOOLCHAIN_FILE=/ORT/onnxruntime/tool.cmake
 
 CMD ["/bin/bash"]
