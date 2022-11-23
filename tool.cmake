@@ -2,7 +2,7 @@ SET(CMAKE_SYSTEM_NAME Linux)
 SET(CMAKE_SYSTEM_VERSION 1)
 SET(CMAKE_SYSTEM_PROCESSOR armv7-a)
 
-SET(CMAKE_SYSROOT <path to sysroot>)
+SET(CMAKE_SYSROOT "/TC/arm-tc/arm-none-linux-gnueabihf/libc")
 
 SET(CMAKE_C_COMPILER arm-none-linux-gnueabihf-gcc)
 SET(CMAKE_CXX_COMPILER arm-none-linux-gnueabihf-g++)

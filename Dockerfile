@@ -1,37 +1,29 @@
 FROM ubuntu:22.04
 
-# create a volume and download prequisites
-
-
-# install essential tools
+# install essential tools and libraries
 RUN apt-get update && apt-get install -y build-essential \
-    cmake \
-    make \
-    git \
-    vim 
+    cmake make git vim wget unzip \
+    python3 python3-pip
+RUN pip install flatbuffers
 
-RUN apt-get install -y git
-
-# copy and extract toolchain 
-WORKDIR /TC 
-COPY arm-tc.tar.xz .
-RUN tar -xf arm-tc.tar.xz
-RUN rm arm-tc.tar.xz
-
-RUN apt-get install wget
-
-# download protoc
+# create a volume and download prequisites
 WORKDIR /protoc
 RUN wget -O protoc.zip https://github.com/protocolbuffers/protobuf/releases/download/v3.18.1/protoc-3.18.1-linux-x86_64.zip
-RUN apt-get install unzip
 RUN unzip protoc.zip
 
-WORKDIR /ORT
-COPY tool.cmake .
-ENV PATH="/TC/arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-linux-gnueabihf/bin:${PATH}"
+WORKDIR /TC 
+COPY arm-tc.tar.xz .
+RUN mkdir arm-tc && tar -xf arm-tc.tar.xz -C arm-tc --strip-components 1 && rm arm-tc.tar.xz
+ENV PATH="${PATH}:/TC/arm-tc/bin"
 
-RUN apt-get install -y python3 python3-pip
-RUN pip install flatbuffers
-# RUN ./build.sh --config Release --parallel --arm --update --build --build_shared_lib --cmake_extra_defines ONNX_CUSTOM_PROTOC_EXECUTABLE=<path to bin/protoc> CMAKE_TOOLCHAIN_FILE=/ORT/onnxruntime/tool.cmake
+WORKDIR /ORT
+VOLUME /ORT 
+# RUN git clone --recursive https://github.com/Microsoft/onnxruntime.git
+# COPY tool.cmake ./onnxruntime
+
+# # compile onnxruntime
+# WORKIDR /ORT/onnxruntime
+# RUN git checkout v1.12.1
+# RUN ./build.sh --config Release --parallel --arm --update --build --build_shared_lib --cmake_extra_defines ONNX_CUSTOM_PROTOC_EXECUTABLE=/protoc/bin/protoc CMAKE_TOOLCHAIN_FILE=/ORT/onnxruntime/tool.cmake
 
 CMD ["/bin/bash"]
