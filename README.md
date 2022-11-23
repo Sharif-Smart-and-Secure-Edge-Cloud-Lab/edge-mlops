@@ -95,7 +95,9 @@ To get the onnx output use the command below:
 $>python -m tf2onnx.convert --saved-model ./saved_model/ --opset 12 --output ./convert_model/output.onnx
 ```
 ## ONNXRuntime Cross Compiling
-We have cross compiled ORT for armv7 architecture and tested it on Raspberry Pi 400. First, clone onnxruntime repository and a custom protoc version for cross compiling (refer to [ORT](https://onnxruntime.ai/docs/build/inferencing.html#arm) documentation for more details). I have used the following `tool.cmake` file for cross compiling:
+We have cross compiled ORT for armv7 architecture and tested it on Raspberry Pi 400. First, clone onnxruntime repository and a custom protoc version for cross compiling (refer to [ORT](https://onnxruntime.ai/docs/build/inferencing.html#arm) documentation for more details). You can either follow these steps to compile ORT manually or use the Dockerfile provided in this repository. First, manual steps are explained and then using Docker is introduced.
+### 1) Manual compilation
+I have used the following `tool.cmake` file for cross compiling:
 
 ```cmake
 SET(CMAKE_SYSTEM_NAME Linux)
@@ -117,6 +119,12 @@ SET(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
 
 Make sure that ARM toolchain is accessible from PATH (otherwise provide absolute path). You might want to transfer linker and some exectuables to your `/usr` path (such as `ld-linux-armhf.so.3` to `/usr/arm-linux-gnueabihf/`).
 
+I compiled v1.12.1 of ORT. It seems that v1.13 has some issues with cmake. So, make sure to use v1.12.1:
+
+```bash
+$ git checkout v.1.12.1
+```
+
 Next, run the following command to cross compile ORT:
 
 ```bash
@@ -131,3 +139,12 @@ $ make
 $ make install
 ```
 And you're all set!
+
+### 2) Docker image
+You can use the Dockerfile provided in this repository to build a Docker image that will cross compile your project with ORT libraries. The final image can be used either manually or as a base image for your project. Image is built on `Ubuntu:22.04` base image. The final image is around 4GB. You can build the image with the following command (make sure that you are in this repository's root directory):
+
+```bash
+$ docker build . -t edgemlops:1.0.0
+```
+
+Image building process could take about two hours (depending on your machine and internet speed). After building the image, ORT libraries are in `/ORT/onnxruntime/` directory. 
