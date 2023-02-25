@@ -1,5 +1,18 @@
 # MLOps
 
+**Contents:**
+
++ [Introduction](#introduction)
++ [Pipeline](#pipeline)
+   + [Model and dataset versioning](#model-and-dataset-versioning)
+   + [Our choice of tools](#our-choice-of-tools)
++ [Model training](#model-training)
++ [ONNXRuntime cross compiling](#onnxruntime-cross-compiling)
+   + [Manual compilation](#1-manual-compilation)
+   + [Docker image](#2-docker-image)
++ [How to guides](#how-to-guides)
+
+## Introduction
 MLOps is an emerging field of ML research that aims to enable and automate ML models into production. According to [sig-mlops](https://github.com/cdfoundation/sig-mlops) MLOps is defined as:
 
 > the extension of the DevOps methodology to include Machine Learning and Data Science assets as first class citizens within the DevOps ecology
@@ -148,3 +161,9 @@ $ docker build . -t edgemlops:1.0.0
 ```
 
 Image building process could take about two hours (depending on your machine and internet speed). After building the image, ORT libraries are in `/ORT/onnxruntime/` directory. 
+
+___
+## How to guides
+We provide documentations on common "How to" questions. You refer to one of the following docs for more information:
++ [How to develope model from scratch?](./doc/develope-model.md)
++ [How to use existing, pretrained models with this pipeline?](./doc/use-existing-models.md)
