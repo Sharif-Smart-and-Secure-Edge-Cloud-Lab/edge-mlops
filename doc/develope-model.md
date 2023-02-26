@@ -1,6 +1,15 @@
 # How to develope a model from scratch?
 This document provides best ways to develope a deep learning model from scratch to be used with our pipeline. We tried to answer this question very generally. Feel free to contribute to this guide!
 
+**Contents:**
++ [Chossing framework](#choosing-framework)
++ [Training model](#training-model)
++ [Conversion to ONNX](#conversion-to-onnx)
+    + [PyTorch](#pytorch)
+    + [TensorFlow](#tensorflow)
++ [Check converted model](#check-converted-model)
++ [Conclusion](#conclusion)
+
 ## Choosing framework
 You can use any framework that is compatible with ONNX. The final product of model training must be converted to an ONNX model. Later this model is loaded to be run. Almost all major frameworks support conversion to ONNX model. The following figures shows the list of supported framework (from [ONNX website](https://onnx.ai/supported-tools.html#buildModel)):
 ![supported frameworks](../images/supported-frameworks.png)
@@ -50,4 +59,4 @@ print(onnx.helper.printable_graph(model.graph))
 Also you can use `Netron` to see model graph in a prettier manner. For more information on how to use Netron, refer to the [Netron repo](https://github.com/lutzroeder/netron).
 
 ## Conclusion
-In this document we discussed best ways to train your model so that later it can be integrated with our pipeline. By the end of this document, you have trained your model in a framework compatible with ONNX and then converted it to ONNX model. Now, you should have an ONNX model that will be run in the ONNXRuntime.
+In this document we discussed best ways to train your model so that later it can be integrated with our pipeline. By the end of this document, you have trained your model in a framework compatible with ONNX and then converted it to ONNX model. Now, you should have an ONNX model that will be run in the ONNXRuntime. For a guide on how to used this model with our pipeline, refer to [this document](./use-existing-models.md)
