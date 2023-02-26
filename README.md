@@ -166,4 +166,4 @@ ___
 ## How to guides
 We provide documentations on common "How to" questions. You refer to one of the following docs for more information:
 + [How to develope model from scratch?](./doc/develope-model.md)
-+ [How to use existing, pretrained models with this pipeline?](./doc/use-existing-models.md)
++ [How to use ONNX models with this pipeline?](./doc/use-existing-models.md)
