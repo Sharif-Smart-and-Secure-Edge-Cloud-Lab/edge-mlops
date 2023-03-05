@@ -162,8 +162,22 @@ $ docker build . -t edgemlops:1.0.0
 
 Image building process could take about two hours (depending on your machine and internet speed). After building the image, ORT libraries are in `/ORT/onnxruntime/` directory. 
 
+
+___
+## MQTT Managers
+
+In the  ```mqtt``` folder, there are 2 programs. One for the host machine that manages the devices that are connected and are supposed to run the model and one for the clients on edge. These programs need a broker to be able to communicate with each other. To do so you can use a broker such as mosquitto to setup your own broker. </br>
+To use these programs, you need to compile them using the Eclipse Paho MQTT C library. </br>https://github.com/eclipse/paho.mqtt.c</br>
+Make sure to edit the CMakeLists file to build the static libraries as well. </br>
+To connect to the program, simply enter the IP of the broker as an argument:
+```bash
+$ ./hostManager "192.168.1.110"
+```
+The program for the host manager must be in the same folder as other folders such as scripts and inference. To make the inference program, you need to already have the docker image in order for program to use it. </br>
+The scripts folder is a simple implementation of the operations that we want to use as a host such as moving files to the edge device, instructions for compiling the inference program and other similar scripts. 
 ___
 ## How to guides
 We provide documentations on common "How to" questions. You refer to one of the following docs for more information:
 + [How to develope model from scratch?](./doc/develope-model.md)
 + [How to use ONNX models with this pipeline?](./doc/use-existing-models.md)
+
