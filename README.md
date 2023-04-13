@@ -6,6 +6,7 @@
 + [Pipeline](#pipeline)
    + [Model and dataset versioning](#model-and-dataset-versioning)
    + [Our choice of tools](#our-choice-of-tools)
+   + [Edge Devices](#edge-devices)
 + [Model training](#model-training)
 + [ONNXRuntime cross compiling](#onnxruntime-cross-compiling)
    + [Manual compilation](#1-manual-compilation)
@@ -36,6 +37,7 @@ Based on our research and the requirements of the project, we decided to use the
 5. **Model monitoring:** We will provide simple logging and monitoring tools to monitor the performance of the model.
 6. **Metadata gathering:** During whole pipeline execution, some metadata will be gathered and stored in the database.
 7. **Triggering mechanisms:** The pipeline execution triggering mechanism will be based on pipeline change and manual triggering.
+8. **Choosing edge devices:** Learning about various edge devices, their limits, and the various models that can be used with them.
 
 A discussion of currently available tools for each stage of the pipeline is provided below.
 
@@ -175,6 +177,24 @@ $ ./hostManager "192.168.1.110"
 ```
 The program for the host manager must be in the same folder as other folders such as scripts and inference. To make the inference program, you need to already have the docker image in order for program to use it. </br>
 The scripts folder is a simple implementation of the operations that we want to use as a host such as moving files to the edge device, instructions for compiling the inference program and other similar scripts. 
+___
+### Edge Devices
+
+When it comes to choosing the right edge device, It's important to consider our specific use case. There are several options available in the market, but three popular choices are Raspberry Pi, Jetson and BeagleBone. In the following, we'll provide a comparative analysis of these devices.
+
+## Raspberry Pi
+The Raspberry Pi is a popular choice for edge computing due to its low cost and versatility. It is a credit-card sized computer that can run various operating systems, including Linux and Windows.
+
+Running a ML program in a Pi requires a significant amount of memory (or RAM) to process calculations. The lastest and preferred model for ML applications is the [Raspberry Pi 4 Model B](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/?variant=raspberry-pi-4-model-b-8gb).
+
+Typical ML projects for the Pi involve [classifying items](https://www.geeksforgeeks.org/getting-started-with-classification/), including different visual, vocal, or statistical patterns. The backbone of all ML models is a software library and its dependencies. There are currently a variety of free ML frameworks. Some of most well-known platforms include the following:
+
+- [TensorFlow](https://www.tensorflow.org/overview): A flexible platform for building general ML models.
+- [OpenCV](https://opencv.org/about/): A library dedicated to computer vision and related object detection tasks.
+- [Google Assistant](https://developers.google.com/assistant/sdk/): A library dedicated to voice recognition tasks.
+- [Edge Impulse](https://www.edgeimpulse.com/about): A cloud-based platform that simplifies ML app development.
+
+
 ___
 ## How to guides
 We provide documentations on common "How to" questions. You refer to one of the following docs for more information:
