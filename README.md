@@ -178,11 +178,11 @@ $ ./hostManager "192.168.1.110"
 The program for the host manager must be in the same folder as other folders such as scripts and inference. To make the inference program, you need to already have the docker image in order for program to use it. </br>
 The scripts folder is a simple implementation of the operations that we want to use as a host such as moving files to the edge device, instructions for compiling the inference program and other similar scripts. 
 ___
-### Edge Devices
+## Edge Devices
 
 When it comes to choosing the right edge device, It's important to consider our specific use case. There are several options available in the market, but three popular choices are Raspberry Pi, Jetson and BeagleBone. In the following, we'll provide a comparative analysis of these devices.
 
-## Raspberry Pi
+### Raspberry Pi
 The Raspberry Pi is a popular choice for edge computing due to its low cost and versatility. It is a credit-card sized computer that can run various operating systems, including Linux and Windows.
 
 Running a ML program in a Pi requires a significant amount of memory (or RAM) to process calculations. The lastest and preferred model for ML applications is the [Raspberry Pi 4 Model B](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/?variant=raspberry-pi-4-model-b-8gb).
