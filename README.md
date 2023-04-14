@@ -185,7 +185,7 @@ When it comes to choosing the right edge device, It's important to consider our 
 ### Raspberry Pi
 The Raspberry Pi is a popular choice for edge computing due to its low cost and versatility. It is a credit-card sized computer that can run various operating systems, including Linux and Windows.
 
-Running a ML program in a Pi requires a significant amount of memory (or RAM) to process calculations. The lastest and preferred model for ML applications is the [Raspberry Pi 4 Model B](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/?variant=raspberry-pi-4-model-b-8gb).
+Running a ML program in a Raspberry Pi requires a significant amount of memory (or RAM) to process calculations. The lastest and preferred model for ML applications is the [Raspberry Pi 4 Model B](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/?variant=raspberry-pi-4-model-b-8gb).
 
 Typical ML projects for the Pi involve [classifying items](https://www.geeksforgeeks.org/getting-started-with-classification/), including different visual, vocal, or statistical patterns. The backbone of all ML models is a software library and its dependencies. There are currently a variety of free ML frameworks. Some of most well-known platforms include the following:
 
@@ -193,6 +193,23 @@ Typical ML projects for the Pi involve [classifying items](https://www.geeksforg
 - [OpenCV](https://opencv.org/about/): A library dedicated to computer vision and related object detection tasks.
 - [Google Assistant](https://developers.google.com/assistant/sdk/): A library dedicated to voice recognition tasks.
 - [Edge Impulse](https://www.edgeimpulse.com/about): A cloud-based platform that simplifies ML app development.
+
+Here are a few examples of ML models that have been successfully applied on Raspberry Pi:
+
+1. **Object detection:** Raspberry Pi can be used to train and run ML models for image classification. For example, you can use TensorFlow to train a model on a dataset of images and then use it on a Raspberry Pi to classify new images in real-time.
+Here is some tutorial on building a real-time object recognition on Raspberry Pi using TensorFlow and OpenCV:
+   [TensorFlow object detection](https://www.tensorflow.org/lite/examples/object_detection/overview)
+   [PyImageSearch object detection](https://pyimagesearch.com/2017/10/16/raspberry-pi-deep-learning-object-detection-with-opencv/)
+   [PyImageSearch face recognition](https://pyimagesearch.com/2018/06/25/raspberry-pi-face-recognition/)
+Other varied uses, such as voice recognition and anomaly detection, are covered in the tutorials and examples here:
+   [TensorFlow projects](https://www.tensorflow.org/lite/examples)
+   [Webcrawler](https://peppe8o.com/use-raspberry-pi-as-your-personal-web-crawler-with-python-and-scrapy/)
+   [Deep learning examples](https://qengineering.eu/deep-learning-examples-on-raspberry-32-64-os.html)
+
+For more information about Raspberry Pi click [here](https://vilros.com/blogs/news/how-raspberry-pi-can-be-used-for-ml-applications)
+
+### Jetson
+
 
 
 ___
