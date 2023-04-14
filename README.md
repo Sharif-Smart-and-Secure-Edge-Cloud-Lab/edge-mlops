@@ -210,7 +210,7 @@ For more information about Raspberry Pi click [here](https://vilros.com/blogs/ne
 ### Jetson
 Jetson is a line of embedded systems designed by NVIDIA specifically for edge computing applications. Jetson devices are equipped with a powerful GPU, which makes them ideal for tasks such as image and video processing, machine learning, and deep learning. Jetson devices are more expensive than Raspberry Pi, but they offer better performance and capabilities for demanding edge computing tasks.
 
-As stated above about Raspberry Pi, for ML purposes we need a significant amount of memory (or RAM) and for jetson, preferred model for ML applications is the [Jetson nano](https://developer.nvidia.com/embedded/jetson-nano-developer-kit).
+As was the case with the Raspberry Pi, ML applications require a sizable amount of memory (or RAM), therefore the [Jetson nano](https://developer.nvidia.com/embedded/jetson-nano-developer-kit) is the device that is most commonly used for ML applications.
 
 
 ___
