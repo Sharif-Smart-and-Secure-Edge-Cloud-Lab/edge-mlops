@@ -195,14 +195,14 @@ Typical ML projects for the Pi involve [classifying items](https://www.geeksforg
 - [Edge Impulse](https://www.edgeimpulse.com/about): A cloud-based platform that simplifies ML app development.
 
 Raspberry Pi can be used to train and run ML models for image classification. For example, you can use TensorFlow to train a model on a dataset of images and then use it on a Raspberry Pi to classify new images in real-time. </br>
-Here is some tutorial on building a real-time object recognition on Raspberry Pi using TensorFlow and OpenCV:
-   [TensorFlow object detection](https://www.tensorflow.org/lite/examples/object_detection/overview)</br>
-   [PyImageSearch object detection](https://pyimagesearch.com/2017/10/16/raspberry-pi-deep-learning-object-detection-with-opencv/)</br>
-   [PyImageSearch face recognition](https://pyimagesearch.com/2018/06/25/raspberry-pi-face-recognition/)</br>
+Here is some tutorial on building a real-time object recognition on Raspberry Pi using TensorFlow and OpenCV:</br>
+- [TensorFlow object detection](https://www.tensorflow.org/lite/examples/object_detection/overview)</br>
+- [PyImageSearch object detection](https://pyimagesearch.com/2017/10/16/raspberry-pi-deep-learning-object-detection-with-opencv/)</br>
+- [PyImageSearch face recognition](https://pyimagesearch.com/2018/06/25/raspberry-pi-face-recognition/)</br>
 Other varied uses, such as voice recognition and anomaly detection, are covered in the tutorials and examples here:</br>
-   [TensorFlow projects](https://www.tensorflow.org/lite/examples)</br>
-   [Webcrawler](https://peppe8o.com/use-raspberry-pi-as-your-personal-web-crawler-with-python-and-scrapy/)</br>
-   [Deep learning examples](https://qengineering.eu/deep-learning-examples-on-raspberry-32-64-os.html)
+- [TensorFlow projects](https://www.tensorflow.org/lite/examples)</br>
+- [Webcrawler](https://peppe8o.com/use-raspberry-pi-as-your-personal-web-crawler-with-python-and-scrapy/)</br>
+- [Deep learning examples](https://qengineering.eu/deep-learning-examples-on-raspberry-32-64-os.html)
 
 For more information about Raspberry Pi click [here](https://vilros.com/blogs/news/how-raspberry-pi-can-be-used-for-ml-applications)
 
