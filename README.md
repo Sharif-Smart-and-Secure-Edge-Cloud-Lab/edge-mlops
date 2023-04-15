@@ -187,7 +187,7 @@ The Raspberry Pi is a popular choice for edge computing due to its low cost and 
 
 Running a ML program in a Raspberry Pi requires a significant amount of memory (or RAM) to process calculations. The lastest and preferred model for ML applications is the [Raspberry Pi 4 Model B](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/?variant=raspberry-pi-4-model-b-8gb).
 
-Typical ML projects for the Pi involve [classifying items](https://www.geeksforgeeks.org/getting-started-with-classification/), including different visual, vocal, or statistical patterns. The backbone of all ML models is a software library and its dependencies. There are currently a variety of free ML frameworks. Some of most well-known platforms include the following:
+Typical ML projects for the Raspberry Pi involve [classifying items](https://www.geeksforgeeks.org/getting-started-with-classification/), including different visual, vocal, or statistical patterns. The backbone of all ML models is a software library and its dependencies. There are currently a variety of free ML frameworks. Some of most well-known platforms include the following:
 
 - [TensorFlow](https://www.tensorflow.org/overview): A flexible platform for building general ML models.
 - [OpenCV](https://opencv.org/about/): A library dedicated to computer vision and related object detection tasks.
@@ -211,6 +211,8 @@ For more information about Raspberry Pi click [here](https://vilros.com/blogs/ne
 Jetson is a line of embedded systems designed by NVIDIA specifically for edge computing applications. Jetson devices are equipped with a powerful GPU, which makes them ideal for tasks such as image and video processing, machine learning, and deep learning. Jetson devices are more expensive than Raspberry Pi, but they offer better performance and capabilities for demanding edge computing tasks.
 
 As was the case with the Raspberry Pi, ML applications require a sizable amount of memory (or RAM), therefore the [Jetson nano](https://developer.nvidia.com/embedded/jetson-nano-developer-kit) is the device that is most commonly used for ML applications.
+
+Several ML frameworks are compatible with Jetson, just like Raspberry Pi. In addition to the frameworks listed in the Raspberry Pi section, Jetson also supports [PyTorch].(https://pytorch.org/features/). PyTorch is known for its ease of use and flexibility, and is widely used in computer vision and natural language processing applications.
 
 
 ___
