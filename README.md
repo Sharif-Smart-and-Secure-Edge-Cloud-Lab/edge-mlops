@@ -223,7 +223,13 @@ Here are a few Jetson ML model examples and tutorials:</br>
 For more information about Jetson Nano click [here](https://vilros.com/blogs/news/how-raspberry-pi-can-be-used-for-ml-applications)
 
 ### Challenges and Solutions
+When building ML models on resource-limited devices such as the Raspberry Pi or Jetson Nano, one of the main challenges that can arise is a lack of available RAM. ML models often require a significant amount of memory to operate, and if there isn't enough RAM available, the models may not be able to run properly or may even crash.
 
+There are several strategies that can be employed to mitigate RAM problems when building ML models on these devices. One approach is to use a smaller model architecture that requires less memory. This can be achieved by reducing the number of layers or neurons in the model.
+
+Another strategy is to reduce the batch size used during training. By using a smaller batch size, less memory is required to store the intermediate activations of the model during training. However, this can also result in longer training times and reduced training accuracy.
+
+One possible solution is to use a swapfile. A swapfile is a file on the system's hard drive that is used as virtual memory when the system runs out of physical RAM. When the system needs more memory than what is available in RAM, it swaps out the least-used memory pages to the swapfile, freeing up space in RAM for more important processes. However, it's important to note that using a swapfile can slow down the system's performance, as accessing the hard drive is slower than accessing RAM. Therefore, it's recommended to use a swapfile only as a temporary solution when running memory-intensive processes on these devices.
 ___
 ## How to guides
 We provide documentations on common "How to" questions. You refer to one of the following docs for more information:
