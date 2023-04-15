@@ -210,10 +210,19 @@ For more information about Raspberry Pi click [here](https://vilros.com/blogs/ne
 ### Jetson
 Jetson is a line of embedded systems designed by NVIDIA specifically for edge computing applications. Jetson devices are equipped with a powerful GPU, which makes them ideal for tasks such as image and video processing, machine learning, and deep learning. Jetson devices are more expensive than Raspberry Pi, but they offer better performance and capabilities for demanding edge computing tasks.
 
-As was the case with the Raspberry Pi, ML applications require a sizable amount of memory (or RAM), therefore the [Jetson nano](https://developer.nvidia.com/embedded/jetson-nano-developer-kit) is the device that is most commonly used for ML applications.
+As was the case with the Raspberry Pi, ML applications require a sizable amount of memory (or RAM), therefore the [Jetson Nano](https://developer.nvidia.com/embedded/jetson-nano-developer-kit) is the device that is most commonly used for ML applications.
 
 Several ML frameworks are compatible with Jetson, just like Raspberry Pi. In addition to the frameworks listed in the Raspberry Pi section, Jetson also supports [PyTorch](https://pytorch.org/features/). PyTorch is known for its ease of use and flexibility, and is widely used in computer vision and natural language processing applications.
 
+Like the Raspberry Pi, the Jetson may be utilized in several ML models. Models for object detection, facial recognition, audio recognition, natural language processing, and several more applications are just a few examples.
+
+Here are a few Jetson ML model examples and tutorials:</br>
+- [Face recognition](https://medium.com/@ageitgey/build-a-hardware-based-face-recognition-system-for-150-with-the-nvidia-jetson-nano-and-python-a25cb8c891fd)</br>
+- [Some ML projects](https://www.seeedstudio.com/blog/2021/02/02/jetson-nano-machine-learning-projects-you-need-to-try/)
+
+For more information about Jetson Nano click [here](https://vilros.com/blogs/news/how-raspberry-pi-can-be-used-for-ml-applications)
+
+### Challenges and Solutions
 
 ___
 ## How to guides
