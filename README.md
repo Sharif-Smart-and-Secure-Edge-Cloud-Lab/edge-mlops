@@ -212,7 +212,7 @@ Jetson is a line of embedded systems designed by NVIDIA specifically for edge co
 
 As was the case with the Raspberry Pi, ML applications require a sizable amount of memory (or RAM), therefore the [Jetson nano](https://developer.nvidia.com/embedded/jetson-nano-developer-kit) is the device that is most commonly used for ML applications.
 
-Several ML frameworks are compatible with Jetson, just like Raspberry Pi. In addition to the frameworks listed in the Raspberry Pi section, Jetson also supports [PyTorch].(https://pytorch.org/features/). PyTorch is known for its ease of use and flexibility, and is widely used in computer vision and natural language processing applications.
+Several ML frameworks are compatible with Jetson, just like Raspberry Pi. In addition to the frameworks listed in the Raspberry Pi section, Jetson also supports [PyTorch](https://pytorch.org/features/). PyTorch is known for its ease of use and flexibility, and is widely used in computer vision and natural language processing applications.
 
 
 ___
