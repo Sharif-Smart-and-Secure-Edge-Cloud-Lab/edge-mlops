@@ -1,4 +1,4 @@
-# Taks Specifications
+# Task Specifications
 In this document, our framework tasks are described. 
 
 ## Edge Mlops Server
