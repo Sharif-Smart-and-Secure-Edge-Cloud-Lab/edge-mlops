@@ -254,7 +254,7 @@ MNIST dataset is a classic daataset of handwritten digits, often used as a bench
 
 The MNIST dataset can be downloaded from the official website [here](http://yann.lecun.com/exdb/mnist/). </br>
 
-Several repositories have used this dataset in some interesting ways. This dataset has a TensorFlowLite version that utilizes a camera, and the setup procedures are available here(https://github.com/vkdnjznd/raspberry-mnist). </br>
+Several repositories have used this dataset in some interesting ways. This dataset has a TensorFlowLite version that utilizes a camera, and the setup procedures are available [here](https://github.com/vkdnjznd/raspberry-mnist). </br>
 
 ___
 ## How to guides
