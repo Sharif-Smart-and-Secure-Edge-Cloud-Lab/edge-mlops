@@ -10,6 +10,7 @@
       + [Raspberry Pi](#raspberry-pi)
       + [Jetson](#jetson)
       + [Challenges and Solutions](#challenges-and-solutions)
+   + [Datasets](#datasets)
 + [Model training](#model-training)
 + [ONNXRuntime cross compiling](#onnxruntime-cross-compiling)
    + [Manual compilation](#1-manual-compilation)
@@ -41,6 +42,7 @@ Based on our research and the requirements of the project, we decided to use the
 6. **Metadata gathering:** During whole pipeline execution, some metadata will be gathered and stored in the database.
 7. **Triggering mechanisms:** The pipeline execution triggering mechanism will be based on pipeline change and manual triggering.
 8. **Choosing edge devices:** Learning about various edge devices, their limits, and the various models that can be used with them.
+9. **Testing datasets:** Examining and evaluating a few datasets that have been processed by edge devices.
 
 A discussion of currently available tools for each stage of the pipeline is provided below.
 
@@ -183,7 +185,7 @@ The scripts folder is a simple implementation of the operations that we want to 
 ___
 ## Edge Devices
 
-When it comes to choosing the right edge device, It's important to consider our specific use case. There are several options available in the market, but three popular choices are Raspberry Pi, Jetson and BeagleBone. In the following, we'll provide a comparative analysis of these devices.
+When it comes to choosing the right edge device, It's important to consider our specific use case. There are several options available in the market, but two popular choices are Raspberry Pi and Jetson. In the following, we'll provide a comparative analysis of these devices.
 
 ### Raspberry Pi
 The Raspberry Pi is a popular choice for edge computing due to its low cost and versatility. It is a credit-card sized computer that can run various operating systems, including Linux and Windows.
@@ -233,6 +235,10 @@ There are several strategies that can be employed to mitigate RAM problems when 
 Another strategy is to reduce the batch size used during training. By using a smaller batch size, less memory is required to store the intermediate activations of the model during training. However, this can also result in longer training times and reduced training accuracy.
 
 One possible solution is to use a swapfile. A swapfile is a file on the system's hard drive that is used as virtual memory when the system runs out of physical RAM. When the system needs more memory than what is available in RAM, it swaps out the least-used memory pages to the swapfile, freeing up space in RAM for more important processes. However, it's important to note that using a swapfile can slow down the system's performance, as accessing the hard drive is slower than accessing RAM. Therefore, it's recommended to use a swapfile only as a temporary solution when running memory-intensive processes on these devices.
+
+## Datsets
+
+
 ___
 ## How to guides
 We provide documentations on common "How to" questions. You refer to one of the following docs for more information:
