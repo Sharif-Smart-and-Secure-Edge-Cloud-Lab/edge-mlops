@@ -242,13 +242,18 @@ In this discussion, we'll look at some of the interesting datasets that have bee
 
 ### CIFAR Dataset
 CIFAR (Canadian Institute for Advanced Research) is a collection of datasets that are commonly used for image recognition. The most popular dataset is CIFAR-10, which consist of 60,000 32*32 color imaages in 10 classes, with 6,000 images per class. </br>
+
 The CIFAR-10 dataset can be downloaded from the official website [here](https://www.cs.toronto.edu/~kriz/cifar.html). </br>
+
 The CIFAR-10 dataset can be used on a Raspberry Pi for various image recognition tasks, such as object recognition and image classification. The small size of images in this dataset makes it easy to work with. </br>
+
 Numerous studies have been conducted in this direction, and one excellent thorough study with time and memory usage results is available [here](https://github.com/RuiyangJu/TripleNet).
 
 ### MNIST Dataset
 MNIST dataset is a classic daataset of handwritten digits, often used as a benchmark for image classification tasks. It consists of 70,000 grayscale images of size 28*28 pixels, with each image representing a single digit from 0 to 9. The dataset is split into 60,000 training images and 10,000 test images. </br>
+
 The MNIST dataset can be downloaded from the official website [here](http://yann.lecun.com/exdb/mnist/). </br>
+
 Several repositories have used this dataset in some interesting ways. This dataset has a TensorFlowLite version that utilizes a camera, and the setup procedures are available here(https://github.com/vkdnjznd/raspberry-mnist). </br>
 
 ___
