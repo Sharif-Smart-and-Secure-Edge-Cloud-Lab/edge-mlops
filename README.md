@@ -238,7 +238,15 @@ One possible solution is to use a swapfile. A swapfile is a file on the system's
 
 ## Datasets
 
+In this discussion, we'll look at some of the interesting datasets that have been and may be analyzed using devices we've talked about, as well as the conclusions drawn from such investigations.
 
+### CIFAR Dataset
+CIFAR (Canadian Institute for Advanced Research) is a collection of datasets that are commonly used for image recognition. The most popular dataset is CIFAR-10, which consist of 60,000 32*32 color imaages in 10 classes, with 6,000 images per class.
+The CIFAR-10 dataset can be downloaded from the official website [here](https://www.cs.toronto.edu/~kriz/cifar.html).
+The CIFAR-10 dataset can be used on a Raspberry Pi for various image recognition tasks, such as object recognition and image classification. The small size of images in this dataset makes it easy to work with. 
+Numerous studies have been conducted in this direction, and one excellent thorough study with time and memory usage results is available [here](https://github.com/RuiyangJu/TripleNet).
+
+### MNIST Dataset
 ___
 ## How to guides
 We provide documentations on common "How to" questions. You refer to one of the following docs for more information:
