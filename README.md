@@ -256,6 +256,14 @@ The MNIST dataset can be downloaded from the official website [here](http://yann
 
 Several repositories have used this dataset in some interesting ways. This dataset has a TensorFlowLite version that utilizes a camera, and the setup procedures are available [here](https://github.com/vkdnjznd/raspberry-mnist). </br>
 
+### Speech command Dataset
+A collection of short audio clips, each containing a spoken command. The dataset is often used for speech recognition tasks, where the goal is to identify the spoken command from the audio clip. The dataset contains of different spoken command such as "yes", "no", "up", "down" and "stop". </br>
+
+This dataset can be downloaded from [here](https://arxiv.org/abs/1804.03209). </br>
+
+There is a source code for this dataest using TensorFlow for classification and data processing [here](https://github.com/tensorflow/datasets/tree/master/tensorflow_datasets/datasets/speech_commands). </br>
+
+
 ___
 ## How to guides
 We provide documentations on common "How to" questions. You refer to one of the following docs for more information:
