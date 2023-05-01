@@ -270,6 +270,18 @@ Visit [this](https://urbansounddataset.weebly.com/urbansound8k.html) page for ad
 
 One instance of classification of this dataset can be found [here](https://github.com/jsalbert/sound_classification_ml_production). Beside classification there is a guide to create a docker image in this repository. </br>
 
+### IMDB movie reviews datasest
+This dataset contains 50,000 of movie reviews, split into 25,000 reviews for training and 25,000 reviews for testing. Each review is labeled as either positive or negative, based on its overall sentiment. The dataset is often used for sentiment analysis, building recommendation system and product resesarch, as it provides valuable insights into customer opinions and preferences. </br>
+
+To learn more about this dataset and to download it, go visit [this](https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews) website. </br>
+
+### Standford Question Answereing Dataset (SQuAD)
+This dataset contains over 100,000 question-answer pairs based on Wikipedia articles. The dataset is designed to test the ability of machine learning models to answer human-generated questions by providing a large corpus of text and a set of associated questions. This dataset can be used to train question-answering models and build chatbots. </br>
+
+This dataset can be downloaded from [here](https://arxiv.org/abs/1606.05250). </br>
+
+One instance of question answering of this dataset can be found [here](https://github.com/kushalj001/pytorch-question-answering). </br>
+
 
 
 ___
