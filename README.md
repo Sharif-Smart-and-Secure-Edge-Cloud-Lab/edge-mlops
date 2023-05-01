@@ -263,6 +263,14 @@ This dataset can be downloaded from [here](https://arxiv.org/abs/1804.03209). </
 
 There is a source code for this dataest using TensorFlow for classification and data processing [here](https://github.com/tensorflow/datasets/tree/master/tensorflow_datasets/datasets/speech_commands). </br>
 
+### UrbanSound8K Dataset
+The UrbanSound8K dataset is a popular dataset used for sound classification tasks. It consists of 8732 labeled sound clips, each of which is 4 seconds long, and is classified into 10 classes of urban sounds. The 10 classes of urban sounds in the dataset are: air conditioner, car horn, children playing, dog bark, drilling, engine idling, gun shot, jackhammer, siren and street music. </br>
+
+Visit [this](https://urbansounddataset.weebly.com/urbansound8k.html) page for additional details about this dataset and to download it. </br>
+
+One instance of classification of this dataset can be found [here](https://github.com/jsalbert/sound_classification_ml_production). Beside classification there is a guide to create a docker image in this repository. </br>
+
+
 
 ___
 ## How to guides
