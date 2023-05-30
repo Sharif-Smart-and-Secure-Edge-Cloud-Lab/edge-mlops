@@ -18,19 +18,30 @@ The main responsibilities of edge mlops server is as follows:
 + Starting modules and checking their health
 
 ## Train Module
-Model training and reporting model performance is done in this component. The training must be automated and be versioned. The tasks of this module are:
-+ Model training
-+ Reporting model performance
-+ Setting hyperparameters
-+ Versioning the model
-+ Downloading and managing the dataset
+Model training and reporting model performance is done in this component. The training must be automated and be versioned. 
+### Functions:
+- [] Model training (pipeline initaing)
+- [] Reporting model performance (set evaluation metrics)
+- [] Setting hyperparameters
+- [] Downloading and managing the dataset (set the dataset)
+- [] Setting hardware parameters (GPU, CPU, etc.)
+
+### TODO:
+
 
 ## Delpoy Module
-Code compilation and generating final executable is handled in this component. It's a Docker container that has required toolchain, libraries, etc. for a specific hardware. As of now, it's capable of compiling code for Armv7 architecture with only ONNXRuntime library. Its responsibilities are listed as follows:
-1. Compiling pipeline C/C++ code for different architecture
-2. Generating standalone executables
-3. Pacakging executable along with required files
-4. Supporting important libraries such as OpenCV
+Code compilation and generating final executable is handled in this component. It's a Docker container that has required toolchain, libraries, etc. for a specific hardware. As of now, it's capable of compiling code for Armv7 architecture with only ONNXRuntime library.
+### Functions:
+- [] Compiling pipeline C/C++ code for different architecture
+    - Currently only ARMv7-a
+- [] Generating standalone executables
+- [] Pacakging executable along with required files
+- [] Supporting important libraries such as OpenCV
+
+### TODO:
+- A CMakeLists.txt file per project
+- JSON file defining pipeline (each module can consume related part of it)
+- Compiling commands
 
 ## UI Webserver
 This component serves an UI to the users so that they can interact with the framework. It must have the following capabilities:
@@ -90,8 +101,16 @@ This component only act as a way for users to interact with the whole framework.
 ## Edge Client
 Each edge device must be capable of receiving files and trasnfering data to the `Edge Mlops Server`. Therefore, we need an app that can run on most devices and could handle file and data transfer through data network. The protocols and program itself must be defined so that it can meet the module's functions.
 ### Functions:
-- [x] Transfer file and data 
-- [x] Managing executable and making sure its alive
-- [x] Reporting model and device status
+- [] Initialize the device
+- [] Transfer file and data
+- [] Managing executable and making sure its alive
+    - Report status (battery level, memory usage, etc. at a specific, predefined rate)
+- [] Reporting model results
 - [] Update model
 - [] Run on any device with no excessive overhead
+
+### TODO:
+- Send and recieve data on http/socket
+- MQTT protocol 
+- Python forntend with a C/C++ backend
+- Socket or pipe as a communication proctocl between Python frontend and C/Cpp backend
