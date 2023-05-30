@@ -88,9 +88,10 @@ A pipeline is defined as a set of dataset, preprocessings, model, and postproces
 This component only act as a way for users to interact with the whole framework.
 
 ## Edge Client
-Each edge device must be capable of receiving files and trasnfering data to the `Edge Mlops Server`. Therefore, we need an app that can run on most devices and could handle file and data transfer through data network. The protocols and program itself must be defined so that it can meet the following goals:
-+ Transfer file and data
-+ Managing executable and making sure its alive
-+ Reporting model and device status
-+ Update model
-+ Run on any device with no excessive overhead
+Each edge device must be capable of receiving files and trasnfering data to the `Edge Mlops Server`. Therefore, we need an app that can run on most devices and could handle file and data transfer through data network. The protocols and program itself must be defined so that it can meet the module's functions.
+### Functions:
+- [x] Transfer file and data 
+- [x] Managing executable and making sure its alive
+- [x] Reporting model and device status
+- [] Update model
+- [] Run on any device with no excessive overhead
