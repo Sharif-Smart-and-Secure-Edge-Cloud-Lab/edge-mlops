@@ -45,7 +45,10 @@ def build_docker_image():
 # Build provided model name
 @app.route("/build/<model_name>")
 def build_model(model_name):
-    return f"Building {model_name}..."
+    # First check if deploy module Docker is built
+    if not dapi.is_image_exist(DEPLOY_MODULE_DOCKER_TAG):
+        return "Deploy module Docker image is not built yet. Try again!"
+    
 
 # Deploy provided model name if built
 @app.route("/deploy/<model_name>")

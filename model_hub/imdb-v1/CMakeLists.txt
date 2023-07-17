@@ -1,16 +1,16 @@
 cmake_minimum_required(VERSION 3.10)
 
-project("edge-mlops")
+project("imdb-v1")
 
 enable_language(CXX)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-psabi")
-set(ORT_LIB_DIR "/home/nima/onnxruntime/build/Linux/Release")
+set(ORT_LIB_DIR "/ORT/onnxruntime/build/Linux/Release")
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
-set(ONNXRUNTIME_INCLUDE_DIR "/home/nima/onnxruntime/include/onnxruntime/core/session")
+set(ONNXRUNTIME_INCLUDE_DIR "/ORT/onnxruntime/include/onnxruntime/core/session")
 include_directories("${ONNXRUNTIME_INCLUDE_DIR}")
 
 link_directories("${ORT_LIB_DIR}"
@@ -53,5 +53,5 @@ target_link_libraries(${PROJECT_NAME} -static
 install(TARGETS ${PROJECT_NAME} DESTINATION bin)
 install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/word_indexes.json DESTINATION bin
               PERMISSIONS OWNER_READ GROUP_READ)
-install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/../convert_model/output.onnx DESTINATION bin
+install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/convert_model/output.onnx DESTINATION bin
               PERMISSIONS OWNER_READ GROUP_READ)
