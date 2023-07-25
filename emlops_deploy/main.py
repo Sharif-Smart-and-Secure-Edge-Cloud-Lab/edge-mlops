@@ -1,5 +1,5 @@
 import threading
-from flask import Flask
+from flask import Flask, jsonify
 from emlops_deploy import *
 import emlops_deploy.docker_api as dapi
 
@@ -16,13 +16,13 @@ def main_page():
 # Build Dockerfile
 @app.route("/build")
 def build_docker_image():
-    msg = ""
+    status = dict()
     # Check whether image exists:
     img_exists = dapi.is_image_exist(DEPLOY_MODULE_DOCKER_TAG)
     if img_exists:
-        msg = "Deploy module image exists\n"
+        status['exists'] = True
+        status['building'] = False
     else:
-        msg = "Building Docker image in background\n"
         # Build docker image
         for i in range(MAX_NUM_BUILD_THREADS):
             if docker_build_threads[i] is None:
@@ -30,17 +30,23 @@ def build_docker_image():
                 build_thread = threading.Thread(target=dapi.build_emlops, args=(i,))
                 docker_build_threads[i] = build_thread
                 build_thread.start()
+                status['exists'] = False
+                status['building'] = True
                 break
             elif not docker_build_threads[i].is_alive():
                 # Thread is dead, reuse the ID
                 build_thread = threading.Thread(target=dapi.build_emlops, args=(i,))
                 docker_build_threads[i] = build_thread
                 build_thread.start()
+                status['exists'] = False
+                status['building'] = True
                 break
         else:
             # We couldn't found an ID, so try again later...
-            msg = "No free thread could be found for building procedure. Try again later!\n"
-    return msg
+            status['exists'] = False
+            status['building'] = False
+
+    return jsonify(status)
 
 # Build provided model name
 @app.route("/build/<model_name>")
