@@ -50,11 +50,19 @@ def build_docker_image():
 
 # Build provided model name
 @app.route("/build/<model_name>")
-def build_model(model_name):
+def build_model(model_name: str):
+    status = dict()
     # First check if deploy module Docker is built
     if not dapi.is_image_exist(DEPLOY_MODULE_DOCKER_TAG):
-        return "Deploy module Docker image is not built yet. Try again!"
-    
+        status['deploy_exists'] = False
+        status[model_name] = False
+    else:
+        dapi.build_model(model_name)
+        status['deploy_exists'] = True
+        status[model_name] = True
+
+    # Now check if the model_name is built
+    return jsonify(status)    
 
 # Deploy provided model name if built
 @app.route("/deploy/<model_name>")

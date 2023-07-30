@@ -1,6 +1,8 @@
 import os 
 import docker
 from emlops_deploy import *
+import subprocess
+import shlex
 
 docker_client = docker.from_env()
 
@@ -40,3 +42,21 @@ def build_emlops(id):
         os.chdir(cwd)
         docker_build_status[id] = False
     
+def build_model(model_name):
+    """
+    Builds model in emlops container
+
+    :param model_name: model name
+    :type model_name: str
+    :return: None
+    """
+    #FIXME: Currently only runs for our imdb-v1 pipeline
+    deploy_module_cont = docker_client.containers.run(DEPLOY_MODULE_DOCKER_TAG,
+                                                    command="tail -f /dev/null",
+                                                    detach=True,
+                                                    remove=True)
+    cont_id = deploy_module_cont.id
+    subprocess.run(shlex.split(f"docker cp {PROJECT_ROOT_DIR}/model_hub/{model_name} {cont_id}:/{model_name}"))
+    status, output = deploy_module_cont.exec_run(f"chmod +x /{model_name}/build.sh")
+    status, output = deploy_module_cont.exec_run(f"/{model_name}/build.sh")
+    deploy_module_cont.stop()
