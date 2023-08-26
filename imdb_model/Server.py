@@ -23,23 +23,15 @@ def run_model():
         json_data = json.dumps(json_data)
         json_data = json.loads(json_data)
 
-        result = IMDB.deploy(json_data)
+        IMDB.deploy(json_data)
 
-        return jsonify(result)
-    except Exception as e:
-        traceback.print_exc()
-        return jsonify({'error': str(e)}), 400
-
-@app.route('/results')
-def show_results():
-    try:
         while not os.path.isfile('done_signal.json'):
             # Wait for the signal file to be created
             time.sleep(1)
 
         # Signal file exists, read the results
-        with open('fitting_progress.json', 'r') as fp:
-            fitting_progress = json.load(fp)
+        # with open('fitting_progress.json', 'r') as fp:
+            # fitting_progress = json.load(fp)
 
         with open('accuracy.json', 'r') as fp:
             accuracy = json.load(fp)
@@ -47,8 +39,10 @@ def show_results():
         # Remove the signal file to prepare for the next run
         os.remove('done_signal.json')
 
-        return render_template('results.html', fitting_progress=fitting_progress, accuracy=accuracy)
+        return render_template('results.html', accuracy=accuracy)
+    
     except Exception as e:
+        traceback.print_exc()
         return jsonify({'error': str(e)}), 400
 
 if __name__ == '__main__':

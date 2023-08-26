@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Choose ML Model</title>
+</head>
+<body>
+    <h1>Choose an ML Model</h1>
+    <form method="post" action="/run_model">
+        <label for="model_type">Select a model:</label>
+        <select name="model_type" id="model_type">
+            <option value="LSTM">LSTM</option>
+            <option value="BoW">BoW</option>
+            <option value="TF-IDF">TF-IDF</option>
+            <option value="Sentiment">Sentiment Analysis</option>
+            <!-- Add more model options as needed -->
+        </select>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

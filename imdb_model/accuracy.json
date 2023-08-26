@@ -1,1 +1,1 @@
-{"precision_0": 1.0, "precision_1": 1.0}
+"              precision    recall  f1-score   support\n\n           0       0.91      0.89      0.90      5000\n           1       0.89      0.91      0.90      5000\n\n    accuracy                           0.90     10000\n   macro avg       0.90      0.90      0.90     10000\nweighted avg       0.90      0.90      0.90     10000\n"
