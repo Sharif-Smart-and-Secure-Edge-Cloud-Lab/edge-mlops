@@ -2,20 +2,95 @@
 <html>
 <head>
     <title>Choose ML Model</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        select, input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        #epoch_input, #batch_size_input {
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <h1>Choose an ML Model</h1>
     <form method="post" action="/run_model">
         <label for="model_type">Select a model:</label>
         <select name="model_type" id="model_type">
-            <option value="LSTM">LSTM</option>
-            <option value="BoW">BoW</option>
+            <option value="BoW">Bag of Words</option>
             <option value="TF-IDF">TF-IDF</option>
+            <option value="LSTM">LSTM</option>
             <option value="Sentiment">Sentiment Analysis</option>
             <!-- Add more model options as needed -->
         </select>
         <br>
+        <div id="epoch_input">
+            <label for="epochs">Number of Epochs:</label>
+            <input type="number" name="epochs" id="epochs">
+        </div>
+        <div id="batch_size_input">
+            <label for="batch_size">Batch Size:</label>
+            <input type="number" name="batch_size" id="batch_size">
+        </div>
+        <br>
         <input type="submit" value="Submit">
     </form>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var modelType = document.getElementById("model_type");
+            var epochInput = document.getElementById("epoch_input");
+            var batchSizeInput = document.getElementById("batch_size_input");
+
+            modelType.addEventListener("change", function() {
+                if (modelType.value === "LSTM") {
+                    epochInput.style.display = "block";
+                    batchSizeInput.style.display = "block";
+                } else {
+                    epochInput.style.display = "none";
+                    batchSizeInput.style.display = "none";
+                }
+            });
+        });
+    </script>
 </body>
 </html>

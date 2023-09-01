@@ -62,7 +62,7 @@ def Sentiment(text, analyzer):
     # else :      if needed
     #     return 'Neutral'
 
-def LSTM_Model(data):
+def LSTM_Model(data, epochs, batch_size):
     # The maximum number of words to be used. (most frequent)
     MAX_NB_WORDS = 50000
     # Max number of words in each complaint.
@@ -91,8 +91,8 @@ def LSTM_Model(data):
     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
     
     # Train the model
-    epochs = 2
-    batch_size = 128
+    epochs = int(epochs)
+    batch_size = int(batch_size)
 
     history = model.fit(X_train, Y_train, epochs=epochs, batch_size=batch_size, validation_split=0.1)
     accr = model.evaluate(X_test,Y_test)
@@ -167,7 +167,9 @@ def deploy(json_data):
     model = json_data.get("Model")
 
     if model == "LSTM":
-        LSTM_Model(data)
+        epochs = json_data["Epochs"]
+        batch_size = json_data["Batch Size"]
+        LSTM_Model(data, epochs, batch_size)
     else:
         X = data['review'].values
         sentiment_mapping = {'negative': 0, 'positive': 1}

@@ -20,6 +20,12 @@ def run_model():
             "Model" : data
         }
 
+        if data == "LSTM":
+            epochs = request.form.get('epochs')
+            batch_size = request.form.get('batch_size')
+            json_data["Epochs"] = epochs
+            json_data["Batch Size"] = batch_size
+
         json_data = json.dumps(json_data)
         json_data = json.loads(json_data)
 
