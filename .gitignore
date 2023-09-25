@@ -4,6 +4,8 @@ inference/build
 build
 t.txt
 node_modules
+emlops_client/package-lock.json
+emlops_server/package-lock.json
 
 # Python related files
 # Byte-compiled / optimized / DLL files
