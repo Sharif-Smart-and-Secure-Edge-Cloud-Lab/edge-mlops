@@ -4,6 +4,8 @@ inference/build
 build
 t.txt
 node_modules
+client/package.json
+client/package-lock.json
 
 # Python related files
 # Byte-compiled / optimized / DLL files
