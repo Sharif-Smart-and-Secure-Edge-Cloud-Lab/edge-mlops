@@ -1,15 +1,19 @@
 import pandas as pd
+import tensorflow as tf
 import zipfile
 import os
 import json
 import datetime
 import re
+import onnx
+import tf2onnx
 
+from skl2onnx import convert_sklearn
+from skl2onnx.common.data_types import FloatTensorType
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 from sklearn.metrics import classification_report
-from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
 from keras.models import Sequential
@@ -53,15 +57,6 @@ def done_signal():
     with open("done_signal.json", "w") as file:
         json.dump(done_signal, file)
 
-def Sentiment(text, analyzer):
-    score = analyzer.polarity_scores(text)['compound']
-    if (score >= 0):
-        return 'Positive'
-    elif (score < 0):
-        return 'Negative'
-    # else :      if needed
-    #     return 'Neutral'
-
 def LSTM_Model(data, epochs, batch_size):
     # The maximum number of words to be used. (most frequent)
     MAX_NB_WORDS = 50000
@@ -102,6 +97,11 @@ def LSTM_Model(data, epochs, batch_size):
 
     save_model(model, history)
     save_report(accuracy)
+    
+    initial_type = [tf.TensorSpec([3, 3],  tf.float32, name="x")]
+    onnx_model, _ = tf2onnx.convert.from_keras(model, initial_type, opset=13)
+    onnx.save(onnx_model, "imdb_output.onnx")
+
     done_signal()
 
 def BoW_Model(x_train, x_test, y_train, y_test):
@@ -116,6 +116,11 @@ def BoW_Model(x_train, x_test, y_train, y_test):
 
     # save_model(model, model)
     save_report(report)
+    
+    initial_type = [("float_input", FloatTensorType([None, 4]))]
+    onnx_model = convert_sklearn(model, initial_types=initial_type, target_opset=13)
+    onnx.save(onnx_model, "imdb_output.onnx")
+    
     done_signal()
 
 def Tfidf_Model(x_train, x_test, y_train, y_test):
@@ -130,27 +135,11 @@ def Tfidf_Model(x_train, x_test, y_train, y_test):
 
     # save_model(model, model)
     save_report(report)
-    done_signal()
-
-def Sentiment_Model(data):
-    analyzer = SentimentIntensityAnalyzer()
-
-    data['sentiment'] = data['review'].apply(lambda x: Sentiment(x, analyzer))
     
-    negative = data.loc[data['sentiment'] == 'Negative']
-    positive = data.loc[data['sentiment'] == 'Positive']
-    negative_true = negative.loc[data['sentiment'] == 'Negative']
-    positive_true = positive.loc[data['sentiment'] == 'Positive']
-
-    precision_0 = len(negative_true) / len(negative)
-    precision_1 = len(positive_true) / len(positive)
-
-    report = {
-        'precision_0': precision_0,
-        'precision_1': precision_1
-    }
-
-    save_report(report)
+    initial_type = [("float_input", FloatTensorType([None, 4]))]
+    onnx_model = convert_sklearn(model, initial_types=initial_type, target_opset=13)
+    onnx.save(onnx_model, "imdb_output.onnx")
+    
     done_signal()
 
 def deploy(json_data):
@@ -180,5 +169,3 @@ def deploy(json_data):
             BoW_Model(x_train, x_test, y_train, y_test)
         elif model == "TF-IDF":
             Tfidf_Model(x_train, x_test, y_train, y_test)
-        elif model == "Sentiment":
-            Sentiment_Model(data)
