@@ -11,7 +11,7 @@ WORKDIR /protoc
 RUN wget -O protoc.zip https://github.com/protocolbuffers/protobuf/releases/download/v3.18.1/protoc-3.18.1-linux-x86_64.zip
 RUN unzip protoc.zip
 
-WORKDIR /TC 
+WORKDIR /TC
 COPY arm-tc.tar.xz .
 RUN mkdir arm-tc && tar -xf arm-tc.tar.xz -C arm-tc --strip-components 1 && rm arm-tc.tar.xz
 ENV PATH="${PATH}:/TC/arm-tc/bin"
