@@ -61,7 +61,7 @@ async function createUser(name,email,password){
 app.use(express.urlencoded({extended: false}))
 app.use(flash())
 app.use(session({
-    secret: 'mamad',
+    secret: 'secret',
     resave: false,
     saveUninitialized: false
 }))
@@ -112,7 +112,7 @@ app.get('/register', checkNotAuthenticated, (req, res) => {
 
 app.get('/training', checkAuthenticated, async (req, res) => {
     const name = await getUserName(req.session.passport.user);
-    res.render("Dashboard.ejs", {name: name} )
+    res.render("Dashboard.ejs", {name: name, background: '/images/dashboard.png'} )
     // const filePath = path.resolve(__dirname, 'D:/EdgeMLOps/views/index.html');
     // res.sendFile(filePath)
 })

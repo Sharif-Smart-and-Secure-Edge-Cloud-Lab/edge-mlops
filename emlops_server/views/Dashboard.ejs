@@ -19,7 +19,8 @@
     body {
     margin: 0;
     padding: 0;
-    background-color: #1d2634;
+    background-image: url(<%=background%>);
+    background-color: #263043;
     color: #9e9ea4;
     font-family: "Montserrat", sans-serif;
   }
@@ -145,26 +146,25 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    padding: 25px;
+    padding: 10px;
     border-radius: 5px;
   }
   
-  .card:first-child {
-    background-color: #2962ff;
+  .card:nth-child(even) {
+    background-image: linear-gradient(to bottom right, #002438, #200381) ;
+    border: 1px solid 130038;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px #1e0474;
+    text-align: left;
   }
   
-  .card:nth-child(2) {
-    background-color: #ff6d00;
+  .card:nth-child(odd) {
+    background-image: linear-gradient(to bottom left, #1e0474 , #7e08e6) ;
+    border: 1px solid 130038;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px #1e0474;
+    text-align: left;
   }
-  
-  .card:nth-child(3) {
-    background-color: #2e7d32;
-  }
-  
-  .card:nth-child(4) {
-    background-color: #d50000;
-  }
-  
   .card-inner {
     display: flex;
     align-items: center;
@@ -172,9 +172,11 @@
   }
   
   .card-inner > .material-icons-outlined {
-    font-size: 45px;
+    font-size: 25px;
   }
-  
+  .card_font{
+    font-size: small;
+  }
   .charts {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -291,17 +293,27 @@
           </li>
           <li class="sidebar-list-item">
             <a href="#" target="_blank">
-              <span class="material-icons-outlined">category</span> Categories
+              <span class="material-icons-outlined">category</span> Data
             </a>
           </li>
           <li class="sidebar-list-item">
             <a href="#" target="_blank">
-              <span class="material-icons-outlined">groups</span> DEVICES
+              <span class="material-icons-outlined">groups</span> Devices
             </a>
           </li>
           <li class="sidebar-list-item">
             <a href="#" target="_blank">
-              <span class="material-icons-outlined">fact_check</span> Inventory
+              <span class="material-icons-outlined">fact_check</span> New Train
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="#" target="_blank">
+              <span class="material-icons-outlined">fact_check</span> Deploy
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="#" target="_blank">
+              <span class="mdi mdi-icon-name"></span> Retrain
             </a>
           </li>
           <li class="sidebar-list-item">
@@ -328,7 +340,7 @@
       <!-- Main -->
       <main class="main-container">
         <div class="main-title">
-          <h2><%=name%>'s DASHBOARD</h2>
+          <h2>Dear <%=name%>, Welcome to your dashboard</h2>
         </div>
 
         <div class="main-cards">
