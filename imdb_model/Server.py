@@ -45,11 +45,11 @@ def run_model():
         # Remove the signal file to prepare for the next run
         os.remove('done_signal.json')
 
-        return render_template('results.html', accuracy=accuracy)
+        return jsonify({'result': accuracy})
     
     except Exception as e:
         traceback.print_exc()
         return jsonify({'error': str(e)}), 400
 
 if __name__ == '__main__':
-    app.run(host='localhost', port=8080)
+    app.run(host='localhost', port=8081)

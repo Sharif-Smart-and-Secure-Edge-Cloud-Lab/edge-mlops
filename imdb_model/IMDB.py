@@ -1,5 +1,6 @@
 import pandas as pd
 import tensorflow as tf
+import numpy as np
 import zipfile
 import os
 import json
@@ -90,15 +91,20 @@ def LSTM_Model(data, epochs, batch_size):
     batch_size = int(batch_size)
 
     history = model.fit(X_train, Y_train, epochs=epochs, batch_size=batch_size, validation_split=0.1)
-    accr = model.evaluate(X_test,Y_test)
-    accuracy = {
-        "Accuracy" : accr[1]
-    }
+    y_pred = model.predict(X_test)
+    # Convert one-hot encoded labels back to single labels
+    Y_test_labels = np.argmax(Y_test, axis=1)
+    y_pred_labels = np.argmax(y_pred, axis=1)
+    report = classification_report(Y_test_labels, y_pred_labels)
+    # accr = model.evaluate(X_test,Y_test)
+    # accuracy = {
+    #     "Accuracy" : accr[1]
+    # }
 
     save_model(model, history)
-    save_report(accuracy)
+    save_report(report)
     
-    initial_type = [tf.TensorSpec([3, 3],  tf.float32, name="x")]
+    initial_type = [tf.TensorSpec([None, 250],  tf.int32, name="x")]
     onnx_model, _ = tf2onnx.convert.from_keras(model, initial_type, opset=13)
     onnx.save(onnx_model, "imdb_output.onnx")
 
