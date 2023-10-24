@@ -7,7 +7,7 @@ node_modules
 emlops_client/package-lock.json
 emlops_server/package-lock.json
 emlops_deploy/exec_hub/*
-
+arm-tc.tar.xz
 # Python related files
 # Byte-compiled / optimized / DLL files
 __pycache__/

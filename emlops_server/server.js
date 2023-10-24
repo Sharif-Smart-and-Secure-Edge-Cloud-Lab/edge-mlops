@@ -11,6 +11,8 @@ const methodOverride = require("method-override")
 const mongoose = require("mongoose")
 const { name } = require("ejs")
 const path = require('path')
+const WebSocket = require('ws')
+const { spawn } = require('child_process');
 
 function initialize(passport, getUserByEmail, getUserById){
     // Function to authenticate users
@@ -113,8 +115,11 @@ app.get('/register', checkNotAuthenticated, (req, res) => {
 app.get('/training', checkAuthenticated, async (req, res) => {
     const name = await getUserName(req.session.passport.user);
     res.render("Dashboard.ejs", {name: name, background: '/images/dashboard.png'} )
-    // const filePath = path.resolve(__dirname, 'D:/EdgeMLOps/views/index.html');
-    // res.sendFile(filePath)
+})
+
+app.get('/Training/NewTrain', checkAuthenticated, async (req, res) => {
+    const name = await getUserName(req.session.passport.user);
+    res.render("New_Train.ejs", {name: name, background: '/images/dashboard.png'} )
 })
 // End Routes
 
@@ -147,6 +152,30 @@ async function getUserName(id){
     const user = await User.findOne({_id: id}); 
     return user.name; 
 }
+
+const wss = new WebSocket.Server({port: '8080'} , ()=> console.log("Websocket is listening to 8080"));
+
+wss.on('connection' , ws=>{
+    ws.on('message' , data =>{
+        if(ws.readyState !== ws.OPEN) return
+        connectedClients.push(ws)
+    });
+});
+
+
+const pythonProcess = spawn('../../edge_env/Scripts/python', ['../imdb_model/Server.py']);
+pythonProcess.stdout.on('data', (data) => {
+    console.log(`Python module output: ${data}`);
+  });
+  
+  pythonProcess.stderr.on('data', (data) => {
+    console.error(`Python module error: ${data}`);
+  });
+  
+  pythonProcess.on('close', (code) => {
+    console.log(`Python module exited with code ${code}`);
+  });
+
 
 app.listen(3000 , () =>{
     mongoose.connect('mongodb://127.0.0.1:27017/Edge_MLOps',{

@@ -1,0 +1,18 @@
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ embedding (Embedding)       (None, 250, 100)          5000000   
+                                                                 
+ spatial_dropout1d (SpatialD  (None, 250, 100)         0         
+ ropout1D)                                                       
+                                                                 
+ lstm (LSTM)                 (None, 100)               80400     
+                                                                 
+ dense (Dense)               (None, 2)                 202       
+                                                                 
+=================================================================
+Total params: 5,080,602
+Trainable params: 5,080,602
+Non-trainable params: 0
+_________________________________________________________________
