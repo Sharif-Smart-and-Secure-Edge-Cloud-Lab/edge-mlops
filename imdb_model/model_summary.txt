@@ -4,15 +4,15 @@ _________________________________________________________________
 =================================================================
  embedding (Embedding)       (None, 250, 100)          5000000   
                                                                  
- spatial_dropout1d (SpatialD  (None, 250, 100)         0         
- ropout1D)                                                       
+ spatial_dropout1d (Spatial  (None, 250, 100)          0         
+ Dropout1D)                                                      
                                                                  
  lstm (LSTM)                 (None, 100)               80400     
                                                                  
  dense (Dense)               (None, 2)                 202       
                                                                  
 =================================================================
-Total params: 5,080,602
-Trainable params: 5,080,602
-Non-trainable params: 0
+Total params: 5080602 (19.38 MB)
+Trainable params: 5080602 (19.38 MB)
+Non-trainable params: 0 (0.00 Byte)
 _________________________________________________________________
