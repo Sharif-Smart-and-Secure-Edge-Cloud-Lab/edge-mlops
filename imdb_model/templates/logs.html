@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Logs</title>
+</head>
+<body>
+    <div id="log-container"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <script>
+        const socket = io('http://localhost:8081/logs');
+        const logContainer = document.getElementById('log-container');
+
+        socket.on('log_message', (log) => {
+            const logMessage = document.createElement('div');
+            logMessage.textContent = log.message; // Access the 'message' property
+            logContainer.appendChild(logMessage);
+        });
+    </script>
+</body>
+</html>

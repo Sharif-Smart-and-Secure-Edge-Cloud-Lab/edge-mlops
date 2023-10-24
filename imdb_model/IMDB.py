@@ -8,7 +8,9 @@ import datetime
 import re
 import onnx
 import tf2onnx
+import logging
 
+from flask_socketio import SocketIO
 from skl2onnx import convert_sklearn
 from skl2onnx.common.data_types import FloatTensorType
 from sklearn.model_selection import train_test_split
@@ -20,6 +22,26 @@ from keras.preprocessing.sequence import pad_sequences
 from keras.models import Sequential
 from keras.layers import Dense, Embedding, LSTM, SpatialDropout1D
 from nltk.corpus import stopwords
+
+# log_file = 'log_output.txt'
+# socketio = SocketIO(message_queue="redis://")
+
+# # Create a custom handler for logging that sends messages to the WebSocket
+# class WebSocketHandler(logging.Handler):
+#     def emit(self, record):
+#         log_message = self.format(record)
+#         socketio.emit('log_message', log_message)
+
+# # Configure the root logger to use the custom handler
+# root_logger = logging.getLogger()
+# root_logger.setLevel(logging.DEBUG)
+# handler = WebSocketHandler()
+# formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+# handler.setFormatter(formatter)
+# root_logger.addHandler(handler)
+# # Also log to console.
+# console = logging.StreamHandler()
+# root_logger.addHandler(console)
 
 def clean_text(text, stop_words):
     text = text.lower() # lowercase text

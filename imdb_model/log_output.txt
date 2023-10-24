@@ -1,0 +1,114 @@
+2023-10-24 19:27:02,469 - WARNING - Werkzeug appears to be used in a production deployment. Consider switching to a production web server instead.
+2023-10-24 19:27:02,475 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://localhost:8081
+2023-10-24 19:27:02,475 - INFO - [33mPress CTRL+C to quit[0m
+2023-10-24 19:27:13,040 - INFO - 127.0.0.1 - - [24/Oct/2023 19:27:13] "GET / HTTP/1.1" 200 -
+2023-10-24 19:27:24,804 - INFO - 127.0.0.1 - - [24/Oct/2023 19:27:24] "GET /logs HTTP/1.1" 200 -
+2023-10-24 19:27:25,336 - INFO - 127.0.0.1 - - [24/Oct/2023 19:27:25] "GET /socket.io/?EIO=4&transport=polling&t=OjYPx8q HTTP/1.1" 200 -
+2023-10-24 19:27:25,859 - INFO - Client connected
+2023-10-24 19:27:25,939 - INFO - 127.0.0.1 - - [24/Oct/2023 19:27:25] "GET /socket.io/?EIO=4&transport=polling&t=OjYPxHR&sid=kysvO_EtAmLj11jXAAAA HTTP/1.1" 200 -
+2023-10-24 19:27:25,984 - INFO - 127.0.0.1 - - [24/Oct/2023 19:27:25] "POST /socket.io/?EIO=4&transport=polling&t=OjYPxHQ&sid=kysvO_EtAmLj11jXAAAA HTTP/1.1" 200 -
+2023-10-24 19:27:31,197 - DEBUG - RNN `implementation=2` is not supported when `recurrent_dropout` is set. Using `implementation=1`.
+2023-10-24 19:39:39,679 - WARNING - Werkzeug appears to be used in a production deployment. Consider switching to a production web server instead.
+2023-10-24 19:39:39,684 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://localhost:8081
+2023-10-24 19:39:39,685 - INFO - [33mPress CTRL+C to quit[0m
+2023-10-24 19:39:39,801 - INFO - 127.0.0.1 - - [24/Oct/2023 19:39:39] "GET /socket.io/?EIO=4&transport=polling&t=OjYSkAu HTTP/1.1" 200 -
+2023-10-24 19:39:40,080 - INFO - Client connected
+2023-10-24 19:39:40,081 - INFO - 127.0.0.1 - - [24/Oct/2023 19:39:40] "POST /socket.io/?EIO=4&transport=polling&t=OjYSkZS&sid=yWOft0HKLIAU1cufAAAA HTTP/1.1" 200 -
+2023-10-24 19:39:40,110 - INFO - 127.0.0.1 - - [24/Oct/2023 19:39:40] "GET /socket.io/?EIO=4&transport=polling&t=OjYSkZT&sid=yWOft0HKLIAU1cufAAAA HTTP/1.1" 200 -
+2023-10-24 19:39:40,116 - INFO - 127.0.0.1 - - [24/Oct/2023 19:39:40] "GET /socket.io/?EIO=4&transport=polling&t=OjYSkeI&sid=yWOft0HKLIAU1cufAAAA HTTP/1.1" 200 -
+2023-10-24 19:39:55,240 - INFO - 127.0.0.1 - - [24/Oct/2023 19:39:55] "GET / HTTP/1.1" 200 -
+2023-10-24 19:40:07,159 - INFO - Client disconnected
+2023-10-24 19:40:07,269 - INFO - 127.0.0.1 - - [24/Oct/2023 19:40:07] "GET /socket.io/?EIO=4&transport=websocket&sid=yWOft0HKLIAU1cufAAAA HTTP/1.1" 200 -
+2023-10-24 19:40:07,727 - INFO - 127.0.0.1 - - [24/Oct/2023 19:40:07] "GET /logs HTTP/1.1" 200 -
+2023-10-24 19:40:08,296 - INFO - 127.0.0.1 - - [24/Oct/2023 19:40:08] "GET /socket.io/?EIO=4&transport=polling&t=OjYSrP_ HTTP/1.1" 200 -
+2023-10-24 19:40:08,879 - INFO - Client connected
+2023-10-24 19:40:08,942 - INFO - 127.0.0.1 - - [24/Oct/2023 19:40:08] "POST /socket.io/?EIO=4&transport=polling&t=OjYSrZs&sid=ziHEEPjcR65ZBANXAAAC HTTP/1.1" 200 -
+2023-10-24 19:40:09,037 - INFO - 127.0.0.1 - - [24/Oct/2023 19:40:09] "GET /socket.io/?EIO=4&transport=polling&t=OjYSrZt&sid=ziHEEPjcR65ZBANXAAAC HTTP/1.1" 200 -
+2023-10-24 19:40:16,739 - DEBUG - RNN `implementation=2` is not supported when `recurrent_dropout` is set. Using `implementation=1`.
+2023-10-24 19:41:14,650 - INFO - Client disconnected
+2023-10-24 19:41:14,652 - INFO - 127.0.0.1 - - [24/Oct/2023 19:41:14] "GET /socket.io/?EIO=4&transport=websocket&sid=ziHEEPjcR65ZBANXAAAC HTTP/1.1" 200 -
+2023-10-24 19:41:14,981 - INFO - 127.0.0.1 - - [24/Oct/2023 19:41:14] "GET /logs HTTP/1.1" 200 -
+2023-10-24 19:41:15,317 - INFO - 127.0.0.1 - - [24/Oct/2023 19:41:15] "GET /socket.io/?EIO=4&transport=polling&t=OjYT5p0 HTTP/1.1" 200 -
+2023-10-24 19:41:15,635 - INFO - Client connected
+2023-10-24 19:41:15,637 - INFO - 127.0.0.1 - - [24/Oct/2023 19:41:15] "POST /socket.io/?EIO=4&transport=polling&t=OjYT5tu&sid=h-79-Rbpe5c-r9AuAAAE HTTP/1.1" 200 -
+2023-10-24 19:41:15,641 - INFO - 127.0.0.1 - - [24/Oct/2023 19:41:15] "GET /socket.io/?EIO=4&transport=polling&t=OjYT5tw&sid=h-79-Rbpe5c-r9AuAAAE HTTP/1.1" 200 -
+2023-10-24 19:41:37,166 - WARNING - Werkzeug appears to be used in a production deployment. Consider switching to a production web server instead.
+2023-10-24 19:41:37,172 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://localhost:8081
+2023-10-24 19:41:37,172 - INFO - [33mPress CTRL+C to quit[0m
+2023-10-24 19:41:37,193 - INFO - 127.0.0.1 - - [24/Oct/2023 19:41:37] "GET /socket.io/?EIO=4&transport=polling&t=OjYTAur HTTP/1.1" 200 -
+2023-10-24 19:41:37,458 - INFO - Client connected
+2023-10-24 19:41:37,458 - INFO - 127.0.0.1 - - [24/Oct/2023 19:41:37] "POST /socket.io/?EIO=4&transport=polling&t=OjYTBDi&sid=KTarybG63Aqq9zxgAAAA HTTP/1.1" 200 -
+2023-10-24 19:41:37,504 - INFO - 127.0.0.1 - - [24/Oct/2023 19:41:37] "GET /socket.io/?EIO=4&transport=polling&t=OjYTBDj&sid=KTarybG63Aqq9zxgAAAA HTTP/1.1" 200 -
+2023-10-24 19:41:37,510 - INFO - 127.0.0.1 - - [24/Oct/2023 19:41:37] "GET /socket.io/?EIO=4&transport=polling&t=OjYTBIa&sid=KTarybG63Aqq9zxgAAAA HTTP/1.1" 200 -
+2023-10-24 19:41:44,575 - INFO - 127.0.0.1 - - [24/Oct/2023 19:41:44] "GET / HTTP/1.1" 200 -
+2023-10-24 19:42:02,720 - DEBUG - RNN `implementation=2` is not supported when `recurrent_dropout` is set. Using `implementation=1`.
+2023-10-24 19:42:56,908 - WARNING - Werkzeug appears to be used in a production deployment. Consider switching to a production web server instead.
+2023-10-24 19:42:56,916 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://localhost:8081
+2023-10-24 19:42:56,916 - INFO - [33mPress CTRL+C to quit[0m
+2023-10-24 19:42:59,278 - INFO - 127.0.0.1 - - [24/Oct/2023 19:42:59] "GET / HTTP/1.1" 200 -
+2023-10-24 19:43:02,352 - INFO - 127.0.0.1 - - [24/Oct/2023 19:43:02] "GET /socket.io/?EIO=4&transport=polling&t=OjYTV-Z HTTP/1.1" 200 -
+2023-10-24 19:43:02,859 - INFO - Client connected
+2023-10-24 19:43:02,952 - INFO - 127.0.0.1 - - [24/Oct/2023 19:43:02] "POST /socket.io/?EIO=4&transport=polling&t=OjYTW2l&sid=UtuJz_40xBEBCy3VAAAA HTTP/1.1" 200 -
+2023-10-24 19:43:02,968 - INFO - 127.0.0.1 - - [24/Oct/2023 19:43:02] "GET /socket.io/?EIO=4&transport=polling&t=OjYTW2m&sid=UtuJz_40xBEBCy3VAAAA HTTP/1.1" 200 -
+2023-10-24 19:43:05,991 - INFO - Client disconnected
+2023-10-24 19:43:06,086 - INFO - 127.0.0.1 - - [24/Oct/2023 19:43:06] "GET /socket.io/?EIO=4&transport=websocket&sid=UtuJz_40xBEBCy3VAAAA HTTP/1.1" 200 -
+2023-10-24 19:43:06,525 - INFO - 127.0.0.1 - - [24/Oct/2023 19:43:06] "GET /logs HTTP/1.1" 200 -
+2023-10-24 19:43:07,015 - INFO - 127.0.0.1 - - [24/Oct/2023 19:43:07] "GET /socket.io/?EIO=4&transport=polling&t=OjYTX3K HTTP/1.1" 200 -
+2023-10-24 19:43:07,565 - INFO - Client connected
+2023-10-24 19:43:07,658 - INFO - 127.0.0.1 - - [24/Oct/2023 19:43:07] "POST /socket.io/?EIO=4&transport=polling&t=OjYTXC5&sid=3bGMauwW3LCXlxzNAAAC HTTP/1.1" 200 -
+2023-10-24 19:43:07,740 - INFO - 127.0.0.1 - - [24/Oct/2023 19:43:07] "GET /socket.io/?EIO=4&transport=polling&t=OjYTXC6&sid=3bGMauwW3LCXlxzNAAAC HTTP/1.1" 200 -
+2023-10-24 19:43:18,648 - DEBUG - [Var] +Variable('float_input', 'float_input', type=FloatTensorType(shape=[None, 4]))
+2023-10-24 19:43:18,649 - DEBUG - [Var] update is_root=True for Variable('float_input', 'float_input', type=FloatTensorType(shape=[None, 4]))
+2023-10-24 19:43:18,649 - DEBUG - [parsing] found alias='SklearnLinearClassifier' for type=<class 'sklearn.linear_model._logistic.LogisticRegression'>.
+2023-10-24 19:43:18,650 - DEBUG - [Op] +Operator(type='SklearnLinearClassifier', onnx_name='SklearnLinearClassifier', inputs='', outputs='', raw_operator=LogisticRegression(solver='saga'))
+2023-10-24 19:43:18,653 - DEBUG - [Op] add In Variable('float_input', 'float_input', type=FloatTensorType(shape=[None, 4])) to Operator(type='SklearnLinearClassifier', onnx_name='SklearnLinearClassifier', inputs='float_input', outputs='', raw_operator=LogisticRegression(solver='saga'))
+2023-10-24 19:43:18,654 - DEBUG - [Var] +Variable('label', 'label', type=Int64TensorType(shape=[]))
+2023-10-24 19:43:18,654 - DEBUG - [Var] +Variable('probabilities', 'probabilities', type=FloatTensorType(shape=[]))
+2023-10-24 19:43:18,654 - DEBUG - [Var] set parent for Variable('label', 'label', type=Int64TensorType(shape=[])), parent=Operator(type='SklearnLinearClassifier', onnx_name='SklearnLinearClassifier', inputs='float_input', outputs='', raw_operator=LogisticRegression(solver='saga'))
+2023-10-24 19:43:18,655 - DEBUG - [Op] add Out Variable('label', 'label', type=Int64TensorType(shape=[])) to Operator(type='SklearnLinearClassifier', onnx_name='SklearnLinearClassifier', inputs='float_input', outputs='label', raw_operator=LogisticRegression(solver='saga'))
+2023-10-24 19:43:18,656 - DEBUG - [Var] set parent for Variable('probabilities', 'probabilities', type=FloatTensorType(shape=[])), parent=Operator(type='SklearnLinearClassifier', onnx_name='SklearnLinearClassifier', inputs='float_input', outputs='label', raw_operator=LogisticRegression(solver='saga'))
+2023-10-24 19:43:18,656 - DEBUG - [Op] add Out Variable('probabilities', 'probabilities', type=FloatTensorType(shape=[])) to Operator(type='SklearnLinearClassifier', onnx_name='SklearnLinearClassifier', inputs='float_input', outputs='label,probabilities', raw_operator=LogisticRegression(solver='saga'))
+2023-10-24 19:43:18,657 - DEBUG - [Op] +Operator(type='SklearnZipMap', onnx_name='SklearnZipMap', inputs='', outputs='', raw_operator=None)
+2023-10-24 19:43:18,657 - DEBUG - [Var] +Variable('output_label', 'output_label', type=Int64TensorType(shape=[None]))
+2023-10-24 19:43:18,658 - DEBUG - [Var] set parent for Variable('output_label', 'output_label', type=Int64TensorType(shape=[None])), parent=Operator(type='SklearnZipMap', onnx_name='SklearnZipMap', inputs='label,probabilities', outputs='', raw_operator=None)
+2023-10-24 19:43:18,658 - DEBUG - [Op] add Out Variable('output_label', 'output_label', type=Int64TensorType(shape=[None])) to Operator(type='SklearnZipMap', onnx_name='SklearnZipMap', inputs='label,probabilities', outputs='output_label', raw_operator=None)
+2023-10-24 19:43:18,659 - DEBUG - [Var] +Variable('output_probability', 'output_probability', type=SequenceType(element_type=DictionaryType(key_type=Int64TensorType(shape=[None]), value_type=FloatTensorType(shape=[]))))
+2023-10-24 19:43:18,659 - DEBUG - [Var] set parent for Variable('output_probability', 'output_probability', type=SequenceType(element_type=DictionaryType(key_type=Int64TensorType(shape=[None]), value_type=FloatTensorType(shape=[])))), parent=Operator(type='SklearnZipMap', onnx_name='SklearnZipMap', inputs='label,probabilities', outputs='output_label', raw_operator=None)
+2023-10-24 19:43:18,659 - DEBUG - [Op] add Out Variable('output_probability', 'output_probability', type=SequenceType(element_type=DictionaryType(key_type=Int64TensorType(shape=[None]), value_type=FloatTensorType(shape=[])))) to Operator(type='SklearnZipMap', onnx_name='SklearnZipMap', inputs='label,probabilities', outputs='output_label,output_probability', raw_operator=None)
+2023-10-24 19:43:18,660 - DEBUG - [Op] update is_evaluated=True for Operator(type='SklearnZipMap', onnx_name='SklearnZipMap', inputs='label,probabilities', outputs='output_label,output_probability', raw_operator=None)
+2023-10-24 19:43:18,660 - DEBUG - [Var] update is_leaf=True for Variable('output_label', 'output_label', type=Int64TensorType(shape=[None]))
+2023-10-24 19:43:18,661 - DEBUG - [Var] update is_leaf=True for Variable('output_probability', 'output_probability', type=SequenceType(element_type=DictionaryType(key_type=Int64TensorType(shape=[None]), value_type=FloatTensorType(shape=[]))))
+2023-10-24 19:43:18,661 - DEBUG - [Var] update is_fed=True for Variable('float_input', 'float_input', type=FloatTensorType(shape=[None, 4])), parent=None
+2023-10-24 19:43:18,661 - DEBUG - [Var] update is_fed=False for Variable('label', 'label', type=Int64TensorType(shape=[])), parent=Operator(type='SklearnLinearClassifier', onnx_name='SklearnLinearClassifier', inputs='float_input', outputs='label,probabilities', raw_operator=LogisticRegression(solver='saga'))
+2023-10-24 19:43:18,662 - DEBUG - [Var] update is_fed=False for Variable('probabilities', 'probabilities', type=FloatTensorType(shape=[])), parent=Operator(type='SklearnLinearClassifier', onnx_name='SklearnLinearClassifier', inputs='float_input', outputs='label,probabilities', raw_operator=LogisticRegression(solver='saga'))
+2023-10-24 19:43:18,663 - DEBUG - [Var] update is_fed=False for Variable('output_label', 'output_label', type=Int64TensorType(shape=[None])), parent=Operator(type='SklearnZipMap', onnx_name='SklearnZipMap', inputs='label,probabilities', outputs='output_label,output_probability', raw_operator=None)
+2023-10-24 19:43:18,663 - DEBUG - [Var] update is_fed=False for Variable('output_probability', 'output_probability', type=SequenceType(element_type=DictionaryType(key_type=Int64TensorType(shape=[None]), value_type=FloatTensorType(shape=[])))), parent=Operator(type='SklearnZipMap', onnx_name='SklearnZipMap', inputs='label,probabilities', outputs='output_label,output_probability', raw_operator=None)
+2023-10-24 19:43:18,664 - DEBUG - [Op] update is_evaluated=False for Operator(type='SklearnLinearClassifier', onnx_name='SklearnLinearClassifier', inputs='float_input', outputs='label,probabilities', raw_operator=LogisticRegression(solver='saga'))
+2023-10-24 19:43:18,664 - DEBUG - [Op] update is_evaluated=False for Operator(type='SklearnZipMap', onnx_name='SklearnZipMap', inputs='label,probabilities', outputs='output_label,output_probability', raw_operator=None)
+2023-10-24 19:43:18,665 - DEBUG - [Shape2] call infer_types for Operator(type='SklearnLinearClassifier', onnx_name='SklearnLinearClassifier', inputs='float_input', outputs='label,probabilities', raw_operator=LogisticRegression(solver='saga'))
+2023-10-24 19:43:18,666 - DEBUG - [Shape-a] Operator(type='SklearnLinearClassifier', onnx_name='SklearnLinearClassifier', inputs='float_input', outputs='label,probabilities', raw_operator=LogisticRegression(solver='saga')) fed 'True' - 'FalseFalse'
+2023-10-24 19:43:18,666 - DEBUG - [Var] update type for Variable('label', 'label', type=Int64TensorType(shape=[]))
+2023-10-24 19:43:18,667 - DEBUG - [Shape-b] Operator(type='SklearnLinearClassifier', onnx_name='SklearnLinearClassifier', inputs='float_input', outputs='label,probabilities', raw_operator=LogisticRegression(solver='saga')) inputs=[Variable('float_input', 'float_input', type=FloatTensorType(shape=[None, 4]))] - outputs=[Variable('label', 'label', type=Int64TensorType(shape=[None])), Variable('probabilities', 'probabilities', type=FloatTensorType(shape=[None, 2]))]
+2023-10-24 19:43:18,668 - DEBUG - [Conv] call Operator(type='SklearnLinearClassifier', onnx_name='SklearnLinearClassifier', inputs='float_input', outputs='label,probabilities', raw_operator=LogisticRegression(solver='saga')) fed 'True' - 'FalseFalse'
+2023-10-24 19:43:18,705 - DEBUG - [Node] 'LinearClassifier' - 'float_input' -> 'label,probability_tensor' (name='LinearClassifier')
+2023-10-24 19:43:19,056 - DEBUG - [Node] 'Normalizer' - 'probability_tensor' -> 'probabilities' (name='Normalizer')
+2023-10-24 19:43:19,058 - DEBUG - [Conv] end - Operator(type='SklearnLinearClassifier', onnx_name='SklearnLinearClassifier', inputs='float_input', outputs='label,probabilities', raw_operator=LogisticRegression(solver='saga'))
+2023-10-24 19:43:19,059 - DEBUG - [Op] update is_evaluated=True for Operator(type='SklearnLinearClassifier', onnx_name='SklearnLinearClassifier', inputs='float_input', outputs='label,probabilities', raw_operator=LogisticRegression(solver='saga'))
+2023-10-24 19:43:19,060 - DEBUG - [Var] update is_fed=True for Variable('label', 'label', type=Int64TensorType(shape=[None])), parent=Operator(type='SklearnLinearClassifier', onnx_name='SklearnLinearClassifier', inputs='float_input', outputs='label,probabilities', raw_operator=LogisticRegression(solver='saga'))
+2023-10-24 19:43:19,061 - DEBUG - [Var] update is_fed=True for Variable('probabilities', 'probabilities', type=FloatTensorType(shape=[None, 2])), parent=Operator(type='SklearnLinearClassifier', onnx_name='SklearnLinearClassifier', inputs='float_input', outputs='label,probabilities', raw_operator=LogisticRegression(solver='saga'))
+2023-10-24 19:43:19,062 - DEBUG - [Shape2] call infer_types for Operator(type='SklearnZipMap', onnx_name='SklearnZipMap', inputs='label,probabilities', outputs='output_label,output_probability', raw_operator=None)
+2023-10-24 19:43:19,062 - DEBUG - [Shape-a] Operator(type='SklearnZipMap', onnx_name='SklearnZipMap', inputs='label,probabilities', outputs='output_label,output_probability', raw_operator=None) fed 'TrueTrue' - 'FalseFalse'
+2023-10-24 19:43:19,063 - DEBUG - [Var] update type for Variable('output_label', 'output_label', type=Int64TensorType(shape=[None]))
+2023-10-24 19:43:19,063 - DEBUG - [Shape-b] Operator(type='SklearnZipMap', onnx_name='SklearnZipMap', inputs='label,probabilities', outputs='output_label,output_probability', raw_operator=None) inputs=[Variable('label', 'label', type=Int64TensorType(shape=[None])), Variable('probabilities', 'probabilities', type=FloatTensorType(shape=[None, 2]))] - outputs=[Variable('output_label', 'output_label', type=Int64TensorType(shape=[None])), Variable('output_probability', 'output_probability', type=SequenceType(element_type=DictionaryType(key_type=Int64TensorType(shape=[None]), value_type=FloatTensorType(shape=[]))))]
+2023-10-24 19:43:19,063 - DEBUG - [Conv] call Operator(type='SklearnZipMap', onnx_name='SklearnZipMap', inputs='label,probabilities', outputs='output_label,output_probability', raw_operator=None) fed 'TrueTrue' - 'FalseFalse'
+2023-10-24 19:43:19,064 - DEBUG - [Node] 'Cast' - 'label' -> 'output_label' (name='Cast')
+2023-10-24 19:43:19,064 - DEBUG - [Node] 'ZipMap' - 'probabilities' -> 'output_probability' (name='ZipMap')
+2023-10-24 19:43:19,065 - DEBUG - [Conv] end - Operator(type='SklearnZipMap', onnx_name='SklearnZipMap', inputs='label,probabilities', outputs='output_label,output_probability', raw_operator=None)
+2023-10-24 19:43:19,065 - DEBUG - [Op] update is_evaluated=True for Operator(type='SklearnZipMap', onnx_name='SklearnZipMap', inputs='label,probabilities', outputs='output_label,output_probability', raw_operator=None)
+2023-10-24 19:43:19,065 - DEBUG - [Var] update is_fed=True for Variable('output_label', 'output_label', type=Int64TensorType(shape=[None])), parent=Operator(type='SklearnZipMap', onnx_name='SklearnZipMap', inputs='label,probabilities', outputs='output_label,output_probability', raw_operator=None)
+2023-10-24 19:43:19,066 - DEBUG - [Var] update is_fed=True for Variable('output_probability', 'output_probability', type=SequenceType(element_type=DictionaryType(key_type=Int64TensorType(shape=[None]), value_type=FloatTensorType(shape=[])))), parent=Operator(type='SklearnZipMap', onnx_name='SklearnZipMap', inputs='label,probabilities', outputs='output_label,output_probability', raw_operator=None)
+2023-10-24 19:43:19,226 - INFO - 127.0.0.1 - - [24/Oct/2023 19:43:19] "POST /run_model HTTP/1.1" 200 -
