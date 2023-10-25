@@ -38,20 +38,22 @@ def index():
 @app.route('/run_model', methods=['POST'])
 def run_model():
     try:
-        data = request.form['model_type']
+        # data = request.form['model_type']
 
-        json_data = {
-            "Model" : data
-        }
+        # json_data = {
+        #     "Model" : data
+        # }
 
-        if data == "LSTM":
-            epochs = request.form.get('epochs')
-            batch_size = request.form.get('batch_size')
-            json_data["Epochs"] = epochs
-            json_data["Batch Size"] = batch_size
+        # if data == "LSTM":
+        #     epochs = request.form.get('epochs')
+        #     batch_size = request.form.get('batch_size')
+        #     json_data["Epochs"] = epochs
+        #     json_data["Batch Size"] = batch_size
 
-        json_data = json.dumps(json_data)
-        json_data = json.loads(json_data)
+        # json_data = json.dumps(json_data)
+        # json_data = json.loads(json_data)
+
+        json_data = request.get_json()
 
         IMDB.deploy(json_data)
 
