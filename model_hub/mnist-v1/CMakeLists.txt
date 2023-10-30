@@ -1,19 +1,20 @@
 cmake_minimum_required(VERSION 3.10)
 
-project("imdb-v1")
+project("mnist-v1")
 
 enable_language(CXX)
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-psabi")
-#set(ORT_LIB_DIR "/ORT/onnxruntime/build/Linux/Release")
-set(ORT_LIB_DIR "/home/nima/Desktop/test-ort/onnxruntime/build/Release")
+
+set(ORT_ROOT "/home/nima/Desktop/test-ort/onnxruntime/")
+set(ORT_LIB_DIR "${ORT_ROOT}build/Release")
+set(ORT_INCLUDE_DIR "${ORT_ROOT}include/onnxruntime/core/session"
+                    "${ORT_ROOT}orttraining/orttraining/training_api/include")
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
-#set(ONNXRUNTIME_INCLUDE_DIR "/ORT/onnxruntime/include/onnxruntime/core/session")
-set(ONNXRUNTIME_INCLUDE_DIR "/home/nima/Desktop/test-ort/onnxruntime/include/onnxruntime/core/session")
-include_directories("${ONNXRUNTIME_INCLUDE_DIR}")
+
+include_directories("${ORT_INCLUDE_DIR}")
 
 link_directories("${ORT_LIB_DIR}"
                  "${ORT_LIB_DIR}/_deps/onnx-build"
@@ -26,7 +27,7 @@ link_directories("${ORT_LIB_DIR}"
                  "${ORT_LIB_DIR}/_deps/pytorch_cpuinfo-build/deps/clog"
                  "${ORT_LIB_DIR}/_deps/pytorch_cpuinfo-build/")
 
-add_executable(${PROJECT_NAME} src/main.cpp src/Model.cpp)
+add_executable(${PROJECT_NAME} src/main.cpp src/train.cpp src/inference.cpp)
 target_link_libraries(${PROJECT_NAME} -static
                                       onnxruntime_session
                                       onnxruntime_optimizer
@@ -53,7 +54,14 @@ target_link_libraries(${PROJECT_NAME} -static
                                       clog)
 
 install(TARGETS ${PROJECT_NAME} DESTINATION bin)
-install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/word_indexes.json DESTINATION bin
+install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/model/checkpoint DESTINATION model
               PERMISSIONS OWNER_READ GROUP_READ)
-install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/convert_model/output.onnx DESTINATION bin
+install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/model/eval_model.onnx DESTINATION model
               PERMISSIONS OWNER_READ GROUP_READ)
+install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/model/optimizer_model.onnx DESTINATION model
+              PERMISSIONS OWNER_READ GROUP_READ)
+install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/model/training_model.onnx DESTINATION model
+              PERMISSIONS OWNER_READ GROUP_READ)
+
+              # install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/convert_model/output.onnx DESTINATION bin
+#               PERMISSIONS OWNER_READ GROUP_READ)

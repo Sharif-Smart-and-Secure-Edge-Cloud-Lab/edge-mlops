@@ -11,15 +11,16 @@ int main(){
 		std::cout << "Enter text (type exit() to exit): ";
 		std::getline(std::cin, input_text);
 		if(input_text == "exit()"){
-			break;	
+			break;
 		}
 		else{
 			try{
-				std::cout << "Result: " << m.inference(input_text) 
+				std::cout << "Result: " << m.inference(input_text)
 						  << "\n===============================\n";
 			} catch (const std::exception& e) {
-				std::cout << "Unable to handle input, " << e.what() 
+				std::cout << "Unable to handle input (entered: " << input_text << ") -> " << e.what()
 						  << "\n===============================\n";
+
 			}
 		}
 	}

@@ -8,6 +8,9 @@ emlops_client/package-lock.json
 emlops_server/package-lock.json
 emlops_deploy/exec_hub/*
 arm-tc.tar.xz
+model_hub/mnist-v1/model
+emlops_train/mnist-v1/trained_model.onnx
+
 # Python related files
 # Byte-compiled / optimized / DLL files
 __pycache__/
