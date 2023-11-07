@@ -1,20 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Logs</title>
+    <title>Live Log Viewer</title>
 </head>
 <body>
-    <div id="log-container"></div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <h1>Live Log Viewer</h1>
+    <pre id="log"></pre>
     <script>
-        const socket = io('http://localhost:8081/logs');
-        const logContainer = document.getElementById('log-container');
+        const logElement = document.getElementById('log');
+        const eventSource = new EventSource('/logs');
 
-        socket.on('log_message', (log) => {
-            const logMessage = document.createElement('div');
-            logMessage.textContent = log.message; // Access the 'message' property
-            logContainer.appendChild(logMessage);
-        });
+        eventSource.onmessage = (event) => {
+            logElement.textContent += event.data;
+        };
     </script>
 </body>
 </html>
