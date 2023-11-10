@@ -6,12 +6,6 @@
 + [Pipeline](#pipeline)
    + [Model and dataset versioning](#model-and-dataset-versioning)
    + [Our choice of tools](#our-choice-of-tools)
-   + [Edge Devices](#edge-devices)
-      + [Raspberry Pi](#raspberry-pi)
-      + [Jetson](#jetson)
-      + [Challenges and Solutions](#challenges-and-solutions)
-   + [Datasets](#datasets)
-+ [Model training](#model-training)
 + [ONNXRuntime cross compiling](#onnxruntime-cross-compiling)
    + [Manual compilation](#1-manual-compilation)
    + [Docker image](#2-docker-image)
@@ -84,36 +78,15 @@ We are focusing on developing MLOps techniques for edge devices. Edge devices ar
 
 ![pipeline](./images/pipeline.png)
 
-`ONNX` standard helps us to be framework agnostic. Almost all training frameworks support ONNX and one can convert the final model to a `.onnx` format and later use it in inference frameworks that support this format (such as `OpenVINO` and `ONNXRuntime`). For inference side, we are going to use `ONNXRuntime`. It is a cross-platform inference engine that supports multiple frameworks and hardware accelerators. So, it's a great choice for edge devices. 
+`ONNX` standard helps us to be framework agnostic. Almost all training frameworks support ONNX and one can convert the final model to a `.onnx` format and later use it in inference frameworks that support this format (such as `OpenVINO` and `ONNXRuntime`). For inference side, we are going to use `ONNXRuntime`. It is a cross-platform inference engine that supports multiple frameworks and hardware accelerators. So, it's a great choice for edge devices.
 
-Plus we are using `Docker` to package our application and it's dependencies. It also helps us to create a CI/CD pipeline which is essential for MLOps. As `Docker` it self could be inefficient for edge devices, we are using `balenaOS` which is a lightweight OS, tailored for each hardware with capabilities to run `Docker` containers. Under the hood, `balenaOS` uses `yocto` to build the image file. As of writing this doc, it supports more than 80 devices. More information about `balenaOS` can be found [here](https://www.balena.io/os/).
+The following figure shows the components of our system:
+<center>
+<img src="./images/framework-struct.png" alt="systemct architecture">
+</center>
 
-## Model Training
-For the model in this project, we decided to use the IMDB movie reviews dataset. This dataset contains reviwes from users for movies which are labeled either a positive review or a negative review. The format of each data in this dataset is an array of numbers which represent a word in this dataset's dictionary. </br>
-For example the word "film" is indexed as integer 13 in this dataset. 
-An example:
-```
-print(data[0])
+The user interacts with the Edge Mlops server GUI which provides model selection, device authentication, parameter tuning, and dataset selection mechanisms. Then, the model is compiled into a single executable bundled with all required libraries, resulting in a standalone program with no extra dependecies.
 
-
-[1, 14, 22, 16, 43, 530, 973, 1622, 1385, 65, 458, 4468, 66, 3941, 4, 173, 36, 256, 5, 25, 100, 43, 838, 112, 50, 670, 2, 9, 35, 480, 284, 5, 150, 4, 172, 112, 167, 2, 336, 385, 39, 4, 172, 4536, 1111, 17, 546, 38, 13, 447, 4, 192, 50, 16, 6, 147, 2025, 19, 14, 22, 4, 1920, 4613, 469, 4, 22, 71, 87, 12, 16, 43, 530, 38, 76, 15, 13, 1247, 4, 22, 17, 515, 17, 12, 16, 626, 18, 2, 5, 62, 386, 12, 8, 316, 8, 106, 5, 4, 2223, 5244, 16, 480, 66, 3785, 33, 4, 130, 12, 16, 38, 619, 5, 25, 124, 51, 36, 135, 48, 25, 1415, 33, 6, 22, 12, 215, 28, 77, 52, 5, 14, 407, 16, 82, 2, 8, 4, 107, 117, 5952, 15, 256, 4, 2, 7, 3766, 5, 723, 36, 71, 43, 530, 476, 26, 400, 317, 46, 7, 4, 2, 1029, 13, 104, 88, 4, 381, 15, 297, 98, 32, 2071, 56, 26, 141, 6, 194, 7486, 18, 4, 226, 22, 21, 134, 476, 26, 480, 5, 144, 30, 5535, 18, 51, 36, 28, 224, 92, 25, 104, 4, 226, 65, 16, 38, 1334, 88, 12, 16, 283, 5, 16, 4472, 113, 103, 32, 15, 16, 5345, 19, 178, 32]
-```
-
-If we translate the entry above we will get this:
-```
-
-# this film was just brilliant casting location scenery story direction everyone's really suited the part they played and you could just imagine being there robert # is an amazing actor and now the same being director # father came from the same scottish island as myself so i loved the fact there was a real connection with this film the witty remarks throughout the film were great it was just brilliant so much that i bought the film as soon as it was released for # and would recommend it to everyone to watch and the fly fishing was amazing really cried at the end it was so sad and you know what they say if you cry at a film it must have been good and this definitely was also # to the two little boy's that played the # of norman and paul they were just brilliant children are often left out of the # list i think because the stars that play them all grown up are such a big profile for the whole film but these children are amazing and should be praised for what they have done don't you think the whole story was so lovely because it was true and was someone's life after all that was shared with us all
-
-```
-The "#" characters are the ones that are not available in model's dictionary.
-
-
-The directory ```saved_model``` contains saved model from tensorflow.</br>
-The directory ```convert_model``` contains the onnx model.</br>
-To get the onnx output use the command below:
-```
-$>python -m tf2onnx.convert --saved-model ./saved_model/ --opset 12 --output ./convert_model/output.onnx
-```
 ## ONNXRuntime Cross Compiling
 We have cross compiled ORT for armv7 architecture and tested it on Raspberry Pi 400. First, clone onnxruntime repository and a custom protoc version for cross compiling (refer to [ORT](https://onnxruntime.ai/docs/build/inferencing.html#arm) documentation for more details). You can either follow these steps to compile ORT manually or use the Dockerfile provided in this repository. First, manual steps are explained and then using Docker is introduced.
 ### 1) Manual compilation
@@ -155,7 +128,7 @@ After waiting a long time, dynamic and static libraries will be generated. You c
 
 ```bash
 $ cmake -DCMAKE_TOOLCHAIN_FILE=<path to TC-arm.cmake> -DCMAKE_INSTALL_PREFIX=<install prefix> ..
-$ make 
+$ make
 $ make install
 ```
 And you're all set!
@@ -167,124 +140,8 @@ You can use the Dockerfile provided in this repository to build a Docker image t
 $ docker build . -t edgemlops:1.0.0
 ```
 
-Image building process could take about two hours (depending on your machine and internet speed). After building the image, ORT libraries are in `/ORT/onnxruntime/` directory. 
+Image building process could take about two hours (depending on your machine and internet speed). After building the image, ORT libraries are in `/ORT/onnxruntime/` directory.
 
-
-___
-## MQTT Managers
-
-In the  ```mqtt``` folder, there are 2 programs. One for the host machine that manages the devices that are connected and are supposed to run the model and one for the clients on edge. These programs need a broker to be able to communicate with each other. To do so you can use a broker such as mosquitto to setup your own broker. </br>
-To use these programs, you need to compile them using the Eclipse Paho MQTT C library. </br>https://github.com/eclipse/paho.mqtt.c</br>
-Make sure to edit the CMakeLists file to build the static libraries as well. </br>
-To connect to the program, simply enter the IP of the broker as an argument:
-```bash
-$ ./hostManager "192.168.1.110"
-```
-The program for the host manager must be in the same folder as other folders such as scripts and inference. To make the inference program, you need to already have the docker image in order for program to use it. </br>
-The scripts folder is a simple implementation of the operations that we want to use as a host such as moving files to the edge device, instructions for compiling the inference program and other similar scripts. 
-___
-## Edge Devices
-
-When it comes to choosing the right edge device, It's important to consider our specific use case. There are several options available in the market, but two popular choices are Raspberry Pi and Jetson. In the following, we'll provide a comparative analysis of these devices.
-
-### Raspberry Pi
-The Raspberry Pi is a popular choice for edge computing due to its low cost and versatility. It is a credit-card sized computer that can run various operating systems, including Linux and Windows.
-
-Running a ML program in a Raspberry Pi requires a significant amount of memory (or RAM) to process calculations. The lastest and preferred model for ML applications is the [Raspberry Pi 4 Model B](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/?variant=raspberry-pi-4-model-b-8gb).
-
-Typical ML projects for the Raspberry Pi involve [classifying items](https://www.geeksforgeeks.org/getting-started-with-classification/), including different visual, vocal, or statistical patterns. The backbone of all ML models is a software library and its dependencies. There are currently a variety of free ML frameworks. Some of most well-known platforms include the following:
-
-- [TensorFlow](https://www.tensorflow.org/overview): A flexible platform for building general ML models.
-- [OpenCV](https://opencv.org/about/): A library dedicated to computer vision and related object detection tasks.
-- [Google Assistant](https://developers.google.com/assistant/sdk/): A library dedicated to voice recognition tasks.
-- [Edge Impulse](https://www.edgeimpulse.com/about): A cloud-based platform that simplifies ML app development.
-
-Raspberry Pi can be used to train and run ML models for image classification. For example, you can use TensorFlow to train a model on a dataset of images and then use it on a Raspberry Pi to classify new images in real-time. </br>
-Here is some tutorial on building a real-time object recognition on Raspberry Pi using TensorFlow and OpenCV:</br>
-- [TensorFlow object detection](https://www.tensorflow.org/lite/examples/object_detection/overview)</br>
-- [PyImageSearch object detection](https://pyimagesearch.com/2017/10/16/raspberry-pi-deep-learning-object-detection-with-opencv/)</br>
-- [PyImageSearch face recognition](https://pyimagesearch.com/2018/06/25/raspberry-pi-face-recognition/)
-
-Other varied uses, such as voice recognition and anomaly detection, are covered in the tutorials and examples here:</br>
-- [TensorFlow projects](https://www.tensorflow.org/lite/examples)</br>
-- [Webcrawler](https://peppe8o.com/use-raspberry-pi-as-your-personal-web-crawler-with-python-and-scrapy/)</br>
-- [Deep learning examples](https://qengineering.eu/deep-learning-examples-on-raspberry-32-64-os.html)
-
-For more information about Raspberry Pi click [here](https://vilros.com/blogs/news/how-raspberry-pi-can-be-used-for-ml-applications)
-
-### Jetson
-Jetson is a line of embedded systems designed by NVIDIA specifically for edge computing applications. Jetson devices are equipped with a powerful GPU, which makes them ideal for tasks such as image and video processing, machine learning, and deep learning. Jetson devices are more expensive than Raspberry Pi, but they offer better performance and capabilities for demanding edge computing tasks.
-
-As was the case with the Raspberry Pi, ML applications require a sizable amount of memory (or RAM), therefore the [Jetson Nano](https://developer.nvidia.com/embedded/jetson-nano-developer-kit) is the device that is most commonly used for ML applications.
-
-Several ML frameworks are compatible with Jetson, just like Raspberry Pi. In addition to the frameworks listed in the Raspberry Pi section, Jetson also supports [PyTorch](https://pytorch.org/features/). PyTorch is known for its ease of use and flexibility, and is widely used in computer vision and natural language processing applications.
-
-Like the Raspberry Pi, the Jetson may be utilized in several ML models. Models for object detection, facial recognition, audio recognition, natural language processing, and several more applications are just a few examples.
-
-Here are a few Jetson ML model examples and tutorials:</br>
-- [Face recognition](https://medium.com/@ageitgey/build-a-hardware-based-face-recognition-system-for-150-with-the-nvidia-jetson-nano-and-python-a25cb8c891fd)</br>
-- [Some ML projects](https://www.seeedstudio.com/blog/2021/02/02/jetson-nano-machine-learning-projects-you-need-to-try/)
-
-For more information about Jetson Nano click [here](https://vilros.com/blogs/news/how-raspberry-pi-can-be-used-for-ml-applications)
-
-### Challenges and Solutions
-When building ML models on resource-limited devices such as the Raspberry Pi or Jetson Nano, one of the main challenges that can arise is a lack of available RAM. ML models often require a significant amount of memory to operate, and if there isn't enough RAM available, the models may not be able to run properly or may even crash.
-
-There are several strategies that can be employed to mitigate RAM problems when building ML models on these devices. One approach is to use a smaller model architecture that requires less memory. This can be achieved by reducing the number of layers or neurons in the model.
-
-Another strategy is to reduce the batch size used during training. By using a smaller batch size, less memory is required to store the intermediate activations of the model during training. However, this can also result in longer training times and reduced training accuracy.
-
-One possible solution is to use a swapfile. A swapfile is a file on the system's hard drive that is used as virtual memory when the system runs out of physical RAM. When the system needs more memory than what is available in RAM, it swaps out the least-used memory pages to the swapfile, freeing up space in RAM for more important processes. However, it's important to note that using a swapfile can slow down the system's performance, as accessing the hard drive is slower than accessing RAM. Therefore, it's recommended to use a swapfile only as a temporary solution when running memory-intensive processes on these devices.
-
-## Datasets
-
-In this discussion, we'll look at some of the interesting datasets that have been and may be analyzed using devices we've talked about, as well as the conclusions drawn from such investigations.
-
-### CIFAR Dataset
-CIFAR (Canadian Institute for Advanced Research) is a collection of datasets that are commonly used for image recognition. The most popular dataset is CIFAR-10, which consist of 60,000 32*32 color imaages in 10 classes, with 6,000 images per class. </br>
-
-The CIFAR-10 dataset can be downloaded from the official website [here](https://www.cs.toronto.edu/~kriz/cifar.html). </br>
-
-The CIFAR-10 dataset can be used on a Raspberry Pi for various image recognition tasks, such as object recognition and image classification. The small size of images in this dataset makes it easy to work with. </br>
-
-Numerous studies have been conducted in this direction, and one excellent thorough study with time and memory usage results is available [here](https://github.com/RuiyangJu/TripleNet).
-
-### MNIST Dataset
-MNIST dataset is a classic daataset of handwritten digits, often used as a benchmark for image classification tasks. It consists of 70,000 grayscale images of size 28*28 pixels, with each image representing a single digit from 0 to 9. The dataset is split into 60,000 training images and 10,000 test images. </br>
-
-The MNIST dataset can be downloaded from the official website [here](http://yann.lecun.com/exdb/mnist/). </br>
-
-Several repositories have used this dataset in some interesting ways. This dataset has a TensorFlowLite version that utilizes a camera, and the setup procedures are available [here](https://github.com/vkdnjznd/raspberry-mnist). </br>
-
-### Speech command Dataset
-A collection of short audio clips, each containing a spoken command. The dataset is often used for speech recognition tasks, where the goal is to identify the spoken command from the audio clip. The dataset contains of different spoken command such as "yes", "no", "up", "down" and "stop". </br>
-
-This dataset can be downloaded from [here](https://arxiv.org/abs/1804.03209). </br>
-
-There is a source code for this dataest using TensorFlow for classification and data processing [here](https://github.com/tensorflow/datasets/tree/master/tensorflow_datasets/datasets/speech_commands). </br>
-
-### UrbanSound8K Dataset
-The UrbanSound8K dataset is a popular dataset used for sound classification tasks. It consists of 8732 labeled sound clips, each of which is 4 seconds long, and is classified into 10 classes of urban sounds. The 10 classes of urban sounds in the dataset are: air conditioner, car horn, children playing, dog bark, drilling, engine idling, gun shot, jackhammer, siren and street music. </br>
-
-Visit [this](https://urbansounddataset.weebly.com/urbansound8k.html) page for additional details about this dataset and to download it. </br>
-
-One instance of classification of this dataset can be found [here](https://github.com/jsalbert/sound_classification_ml_production). Beside classification there is a guide to create a docker image in this repository. </br>
-
-### IMDB movie reviews datasest
-This dataset contains 50,000 of movie reviews, split into 25,000 reviews for training and 25,000 reviews for testing. Each review is labeled as either positive or negative, based on its overall sentiment. The dataset is often used for sentiment analysis, building recommendation system and product resesarch, as it provides valuable insights into customer opinions and preferences. </br>
-
-To learn more about this dataset and to download it, go visit [this](https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews) website. </br>
-
-### Standford Question Answereing Dataset (SQuAD)
-This dataset contains over 100,000 question-answer pairs based on Wikipedia articles. The dataset is designed to test the ability of machine learning models to answer human-generated questions by providing a large corpus of text and a set of associated questions. This dataset can be used to train question-answering models and build chatbots. </br>
-
-This dataset can be downloaded from [here](https://arxiv.org/abs/1606.05250). </br>
-
-One instance of question answering of this dataset can be found [here](https://github.com/kushalj001/pytorch-question-answering). </br>
-
-
-
-___
 ## How to guides
 We provide documentations on common "How to" questions. You refer to one of the following docs for more information:
 + [How to develope model from scratch?](./doc/develope-model.md)
