@@ -3,6 +3,7 @@
 
 #include <memory>
 
-static constexpr int64_t img_size{28 * 28};
+static constexpr int64_t img_width{28};
+static constexpr int64_t img_height{28};
 
 #endif //_CONSTANTS_H_

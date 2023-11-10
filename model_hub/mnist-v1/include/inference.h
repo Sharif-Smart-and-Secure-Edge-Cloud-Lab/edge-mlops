@@ -7,7 +7,7 @@
 #include "session_cache.h"
 
 
-std::vector<float> classify(
+int classify(
     std::shared_ptr<SessionCache> session_cache,
     float* img_data, int64_t batch_size);
 

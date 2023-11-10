@@ -34,8 +34,15 @@ struct SessionCache {
             ort_env(ORT_LOGGING_LEVEL_WARNING, "ort personalize"), session_options(),
             checkpoint_state(Ort::CheckpointState::LoadCheckpoint(artifact_paths.checkpoint_path.c_str())),
             training_session(ort_env, session_options, checkpoint_state, artifact_paths.training_model_path.c_str(),
-                             artifact_paths.eval_model_path.c_str(), artifact_paths.optimizer_model_path.c_str()),
-            inference_session(nullptr) {}
+                             artifact_paths.eval_model_path.c_str(), artifact_paths.optimizer_model_path.c_str())
+            {
+                inference_session =
+                    std::make_unique<Ort::Session>(ort_env, inference_model_path.c_str(), session_options).release();
+            }
+
+    ~SessionCache(){
+        delete this->inference_session;
+    }
 };
 
 

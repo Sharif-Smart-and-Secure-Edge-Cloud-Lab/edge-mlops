@@ -6,7 +6,7 @@ float train_step(
     std::shared_ptr<SessionCache> session_cache, float* batches, int64_t* labels,
     int64_t batch_size)
 {
-    const std::vector<int64_t> input_shape({batch_size, img_size});
+    const std::vector<int64_t> input_shape({batch_size, 1, img_width, img_height});
     const std::vector<int64_t> labels_shape({batch_size});
 
     Ort::MemoryInfo memory_info = Ort::MemoryInfo::CreateCpu(OrtArenaAllocator, OrtMemTypeDefault);
@@ -14,7 +14,7 @@ float train_step(
 
     user_inputs.emplace_back(
         Ort::Value::CreateTensor(memory_info, batches,
-                                 batch_size * img_size * sizeof(float),
+                                 batch_size * img_width * img_height * sizeof(float),
                                  input_shape.data(), input_shape.size(),
                                  ONNX_TENSOR_ELEMENT_DATA_TYPE_FLOAT));
     user_inputs.emplace_back(
