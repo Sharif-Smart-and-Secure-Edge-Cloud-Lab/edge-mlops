@@ -13,7 +13,6 @@ def write_proc_stdin(proc, data):
 def main():
     camera = PiCamera()
     det_proc = subprocess.Popen(["./mnist-v1"],
-                                cwd="./mnist-v1/bin",
                                 text=True,
                                 stdin=subprocess.PIPE,
                                 stdout=subprocess.PIPE)
@@ -26,7 +25,7 @@ def main():
         if mode == "quit":
             break
         elif mode == "run":
-            camera.capture('./mnist-v1/bin/img.jpg', resize=(640, 640))
+            camera.capture('img.jpg', resize=(640, 640))
             write_proc_stdin(det_proc, mode)
             print("\tRunning the model...")
         else:
